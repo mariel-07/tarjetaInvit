@@ -1,0 +1,1679 @@
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root {
+
+    --azul: #06152d;
+    --azul-2: #081d3d;
+    --azul-3: #0c2850;
+
+    --dorado: #d4af5a;
+    --dorado-claro: #f0d88a;
+    --dorado-oscuro: #9b7630;
+
+    --blanco: #ffffff;
+    --crema: #f8f3e8;
+
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    background: var(--azul);
+
+    color: var(--crema);
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    overflow-x: hidden;
+
+}
+
+
+/* =====================================================
+   ENTRADA
+===================================================== */
+
+.entrada {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #102c55 0%,
+            #06152d 45%,
+            #020b18 100%
+        );
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+
+    overflow: hidden;
+
+}
+
+
+.entrada.salida {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+}
+
+
+/* =====================================================
+   ESTRELLAS
+===================================================== */
+
+.estrellas,
+.estrellas::before,
+.estrellas::after {
+
+    position: absolute;
+
+    inset: 0;
+
+    content: "";
+
+    pointer-events: none;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        90px 90px;
+
+    animation:
+        estrellas 8s linear infinite;
+
+}
+
+
+.estrellas::before {
+
+    background-size:
+        130px 130px;
+
+    opacity: .4;
+
+    animation-duration: 12s;
+
+}
+
+
+.estrellas::after {
+
+    background-size:
+        180px 180px;
+
+    opacity: .25;
+
+    animation-duration: 18s;
+
+}
+
+
+@keyframes estrellas {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-90px);
+    }
+
+}
+
+
+/* =====================================================
+   CONTENIDO ENTRADA
+===================================================== */
+
+.entrada-contenido {
+
+    position: relative;
+
+    z-index: 2;
+
+    animation:
+        aparecer 1.5s ease;
+
+}
+
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+.entrada-texto {
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color: var(--dorado-claro);
+
+    margin-bottom: 25px;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =====================================================
+   NUMERO 15
+===================================================== */
+
+.numero-15 {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(150px, 30vw, 270px);
+
+    line-height: .65;
+
+    font-weight: 300;
+
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px var(--dorado-claro);
+
+    text-shadow:
+
+        0 0 25px
+        rgba(212,175,90,.25);
+
+}
+
+
+.numero-15 span {
+
+    display: block;
+
+}
+
+
+.mis-xv {
+
+    margin-top: 45px;
+
+    letter-spacing: 9px;
+
+    font-size: 14px;
+
+    color: var(--dorado-claro);
+
+}
+
+
+.linea-dorada {
+
+    width: 100px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            var(--dorado),
+            transparent
+        );
+
+    margin: 20px auto;
+
+}
+
+
+.nombre-entrada {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 42px;
+
+    font-weight: 400;
+
+    letter-spacing: 5px;
+
+}
+
+
+/* =====================================================
+   BOTÓN ABRIR
+===================================================== */
+
+.btn-abrir {
+
+    margin-top: 50px;
+
+    padding: 16px 35px;
+
+    border:
+
+        1px solid
+        rgba(212,175,90,.7);
+
+    background:
+
+        rgba(255,255,255,.04);
+
+    color: var(--crema);
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    letter-spacing: 3px;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: .4s;
+
+}
+
+
+.btn-abrir:hover {
+
+    background:
+        var(--dorado);
+
+    color:
+        var(--azul);
+
+    box-shadow:
+        0 0 30px
+        rgba(212,175,90,.3);
+
+}
+
+
+.sobre-icono {
+
+    margin-right: 10px;
+
+    color:
+        var(--dorado-claro);
+
+}
+
+
+/* =====================================================
+   INVITACIÓN
+===================================================== */
+
+.invitacion {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 1.2s ease;
+
+}
+
+
+.invitacion.activa {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+/* =====================================================
+   MÚSICA
+===================================================== */
+
+.btn-musica {
+
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    z-index: 100;
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        var(--dorado);
+
+    background:
+        rgba(6,21,45,.85);
+
+    color:
+        var(--dorado-claro);
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(8px);
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+
+        linear-gradient(
+            rgba(3,12,27,.45),
+            rgba(3,12,27,.75)
+        ),
+
+        url("../img/portada.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-attachment: fixed;
+
+}
+
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            circle,
+            transparent 20%,
+            rgba(0,0,0,.45)
+        );
+
+}
+
+
+.hero-contenido {
+
+    position: relative;
+
+    z-index: 2;
+
+    padding: 30px;
+
+}
+
+
+.pequeno {
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    color:
+        var(--dorado-claro);
+
+}
+
+
+.invitacion-texto {
+
+    margin-top: 20px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 22px;
+
+}
+
+
+.numero-hero {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(150px, 25vw, 280px);
+
+    line-height: .8;
+
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px var(--dorado-claro);
+
+    text-shadow:
+        0 0 35px
+        rgba(212,175,90,.3);
+
+    margin: 25px 0;
+
+}
+
+
+.mis-xv-hero {
+
+    letter-spacing: 10px;
+
+    font-size: 13px;
+
+    color:
+        var(--dorado-claro);
+
+}
+
+
+.hero h1 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(55px, 9vw, 100px);
+
+    font-weight: 400;
+
+    margin: 15px 0;
+
+}
+
+
+.adorno-dorado {
+
+    color:
+        var(--dorado-claro);
+
+    letter-spacing: 5px;
+
+    margin: 20px 0;
+
+}
+
+
+.fecha-hero {
+
+    letter-spacing: 5px;
+
+    font-size: 11px;
+
+}
+
+
+.scroll-indicator {
+
+    margin-top: 60px;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    color:
+        var(--dorado-claro);
+
+}
+
+
+.scroll-indicator span {
+
+    display: block;
+
+    width: 1px;
+
+    height: 45px;
+
+    background:
+        var(--dorado);
+
+    margin:
+        0 auto 12px;
+
+}
+
+
+/* =====================================================
+   SECCIONES
+===================================================== */
+
+.seccion {
+
+    min-height: 75vh;
+
+    padding:
+        100px 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+}
+
+
+.seccion:nth-child(even) {
+
+    background:
+        var(--azul-2);
+
+}
+
+
+.seccion:nth-child(odd) {
+
+    background:
+        var(--azul);
+
+}
+
+
+.titulo-pequeno {
+
+    font-size: 40px;
+
+    letter-spacing: 5px;
+
+    color:
+        var(--dorado-claro);
+
+}
+
+
+
+
+.seccion h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(20px, 8vw, 20px);
+
+    font-weight: 400;
+
+    margin:
+        15px 0 25px;
+
+}
+
+
+.decoracion {
+
+    color:
+        var(--dorado);
+
+    font-size: 20px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.seccion p {
+
+    max-width: 550px;
+
+    line-height: 1.9;
+
+    font-size: 14px;
+
+}
+
+
+/* =====================================================
+   FRASE
+===================================================== */
+
+.frase {
+
+    background:
+
+        linear-gradient(
+            rgba(6,21,45,.93),
+            rgba(6,21,45,.93)
+        ),
+
+        url("../img/fondo.jpg");
+
+    background-size: cover;
+
+}
+
+
+.ornamento {
+
+    font-size: 25px;
+
+    color:
+        var(--dorado);
+
+}
+
+
+.texto-elegante {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(30px, 5vw, 50px) !important;
+
+    line-height: 1.3 !important;
+
+    margin:
+        30px 0;
+
+}
+
+
+.linea-corta {
+
+    width: 60px;
+
+    height: 1px;
+
+    background:
+        var(--dorado);
+
+    margin-bottom: 30px;
+
+}
+
+
+/* =====================================================
+   CONTADOR
+===================================================== */
+
+.cuenta {
+
+    background:
+        #041127 !important;
+
+}
+
+
+.contador {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 40px;
+
+    gap: 18px;
+
+}
+
+
+.contador-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.contador-item strong {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(45px, 8vw, 75px);
+
+    font-weight: 300;
+
+    color:
+        var(--dorado-claro);
+
+}
+
+
+.contador-item span {
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+}
+
+
+.separador {
+
+    font-size: 40px;
+
+    color:
+        var(--dorado);
+
+    margin-top: -20px;
+
+}
+
+
+/* =====================================================
+   EVENTO
+===================================================== */
+
+.tarjetas-evento {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    width: 100%;
+
+    max-width: 950px;
+
+    margin:
+        30px 0 40px;
+
+}
+
+
+.tarjeta-evento {
+
+    padding:
+        35px 20px;
+
+    border:
+        1px solid
+        rgba(212,175,90,.3);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .4s;
+
+}
+
+
+.tarjeta-evento:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        var(--dorado);
+
+}
+
+
+.icono-evento {
+
+    color:
+        var(--dorado);
+
+    font-size: 25px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.tarjeta-evento span {
+
+    display: block;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color:
+        var(--dorado-claro);
+
+    margin-bottom: 12px;
+
+}
+
+
+.tarjeta-evento strong {
+
+    display: block;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 28px;
+
+    font-weight: 400;
+
+}
+
+
+.tarjeta-evento p {
+
+    font-size: 11px;
+
+    margin-top: 5px;
+
+}
+
+
+.btn-dorado {
+
+    display: inline-block;
+
+    padding:
+        15px 32px;
+
+    border:
+        1px solid
+        var(--dorado);
+
+    color:
+        var(--dorado-claro);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .4s;
+
+}
+
+
+.btn-dorado:hover {
+
+    background:
+        var(--dorado);
+
+    color:
+        var(--azul);
+
+}
+
+
+/* =====================================================
+   GALERÍA
+===================================================== */
+
+.galeria-grid {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    grid-template-rows:
+        300px 300px;
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+}
+
+
+.foto {
+
+    overflow: hidden;
+
+}
+
+
+.foto-grande {
+
+    grid-row:
+        span 2;
+
+}
+
+
+.foto img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .7s ease;
+
+}
+
+
+.foto:hover img {
+
+    transform:
+        scale(1.08);
+
+}
+
+
+/* =====================================================
+   DRESS CODE
+===================================================== */
+
+.dress-code {
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            #0b2850,
+            #06152d
+        ) !important;
+
+}
+
+
+.corona {
+
+    font-size: 40px;
+
+    color:
+        var(--dorado);
+
+    margin-bottom: 15px;
+
+}
+
+
+.dress-linea {
+
+    width: 80px;
+
+    height: 1px;
+
+    background:
+        var(--dorado);
+
+    margin: 30px 0;
+
+}
+
+
+.dress-code span {
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color:
+        var(--dorado-claro);
+
+}
+
+
+/* =====================================================
+   CONFIRMACIÓN
+===================================================== */
+
+.confirmacion {
+
+    background:
+        var(--azul-2) !important;
+
+}
+
+
+.confirmacion p {
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =====================================================
+   CIERRE
+===================================================== */
+
+.cierre {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+
+        url("../img/fondo.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+
+.cierre-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(3,12,27,.72);
+
+}
+
+
+.cierre-contenido {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.numero-final {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        200px;
+
+    line-height: .8;
+
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px var(--dorado);
+
+}
+
+
+.cierre h2 {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 70px;
+
+    font-weight: 400;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width: 700px) {
+
+
+    .entrada-texto {
+
+        letter-spacing: 3px;
+
+    }
+
+
+    .nombre-entrada {
+
+        font-size: 34px;
+
+    }
+
+
+    .numero-15 {
+
+        font-size: 170px;
+
+    }
+
+
+    .numero-hero {
+
+        font-size: 180px;
+
+    }
+
+
+    .hero {
+
+        background-attachment:
+            scroll;
+
+    }
+
+
+    .contador {
+
+        gap: 8px;
+
+    }
+
+
+    .contador-item strong {
+
+        font-size: 40px;
+
+    }
+
+
+    .separador {
+
+        font-size: 25px;
+
+    }
+
+
+    .tarjetas-evento {
+
+        grid-template-columns:
+            1fr;
+
+        max-width: 350px;
+
+    }
+
+
+    .galeria-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        grid-template-rows:
+            230px 230px;
+
+    }
+
+
+    .numero-final {
+
+        font-size: 150px;
+
+    }
+
+
+    .cierre h2 {
+
+        font-size: 55px;
+
+    }
+
+}
+
+
+@media(max-width: 400px) {
+
+
+    .contador-item strong {
+
+        font-size: 32px;
+
+    }
+
+
+    .contador-item span {
+
+        font-size: 6px;
+
+    }
+
+
+    .separador {
+
+        font-size: 20px;
+
+    }
+
+
+    .galeria-grid {
+
+        grid-template-rows:
+            190px 190px;
+
+    }
+
+}
+
+
+
+
+/* Fecha */
+.fecha-cosmica {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+
+    margin: 0 auto 28px;
+}
+
+.fecha-lateral {
+    flex: 1;
+    max-width: 105px;
+
+    padding: 10px 0;
+
+    border-top: 1px solid rgba(225, 233, 248, 0.75);
+    border-bottom: 1px solid rgba(225, 233, 248, 0.75);
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.fecha-centro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 105px;
+    min-height: 120px;
+    padding: 10px 5px;
+
+    border: 1px solid rgba(207, 220, 245, 0.65);
+    border-radius: 40px 40px 32px 32px;
+
+    background: rgba(3, 13, 32, 0.3);
+
+    box-shadow:
+        inset 0 0 18px rgba(170, 196, 240, 0.05),
+        0 0 14px rgba(0, 0, 0, 0.1);
+}
+
+.fecha-dia {
+    font-family: "Montserrat", sans-serif;
+    font-size: 49px;
+    line-height: 1.05;
+    font-weight: 400;
+}
+
+.fecha-mes {
+    display: none;
+}
+
+.fecha-anio {
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+/* =========================================
+   PADRES EN LA PORTADA
+========================================= */
+
+.familia-portada {
+    margin-top: 35px;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.familia-linea {
+    width: 100px;
+    height: 1px;
+    margin: 12px auto;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--dorado),
+        transparent
+    );
+}
+
+.titulo-padres {
+    color: var(--dorado-claro);
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+}
+
+.nombres-padres {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--crema);
+}
+
+.nombres-padres span {
+    color: var(--dorado-claro);
+    padding: 0 5px;
+}
+
+/* =========================================
+   PADRINOS Y HERMANOS
+========================================= */
+
+.familia {
+    background:
+        radial-gradient(circle at top, #10305a, var(--azul)) !important;
+}
+
+.familia .titulo-pequeno {
+    font-size: 11px;
+}
+
+.familia h2 {
+    font-size: clamp(38px, 7vw, 55px);
+}
+
+.familia-adorno {
+    color: var(--dorado-claro);
+    margin: 0 0 30px;
+}
+
+.familia-tarjetas {
+    width: 100%;
+    max-width: 950px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.familia-tarjeta {
+    padding: 32px 20px;
+    border: 1px solid rgba(212, 175, 90, .4);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .045);
+    transition: transform .3s ease, background .3s ease;
+}
+
+.familia-tarjeta:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, .08);
+}
+
+.familia-etiqueta {
+    color: var(--dorado-claro);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.familia-icono {
+    color: var(--dorado);
+    font-size: 35px;
+    margin: 20px 0;
+}
+
+.familia-tarjeta h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.familia-tarjeta p {
+    font-size: 13px;
+}
+
+/* =========================================
+   CARRUSEL DE RECUERDOS
+========================================= */
+
+.galeria {
+    overflow: hidden;
+    background: var(--azul) !important;
+}
+
+.galeria .titulo-pequeno {
+    font-size: 11px;
+}
+
+.galeria h2 {
+    font-size: clamp(38px, 7vw, 55px);
+}
+
+.galeria-descripcion {
+    margin-bottom: 25px;
+}
+
+.carrusel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 850px;
+    margin: 15px auto 0;
+}
+
+.carrusel-ventana {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 90, .5);
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+}
+
+.carrusel-pista {
+    display: flex;
+    transition: transform .5s ease-in-out;
+}
+
+.carrusel-slide {
+    position: relative;
+    flex: 0 0 100%;
+    height: 420px;
+    overflow: hidden;
+    background: var(--azul-2);
+}
+
+.carrusel-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carrusel-slide p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: none !important;
+    padding: 25px 12px 18px;
+    color: white;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 25px !important;
+    background: linear-gradient(transparent, rgba(2, 9, 24, .9));
+}
+
+.carrusel-flecha {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--dorado);
+    border-radius: 50%;
+    background: var(--azul-2);
+    color: var(--dorado-claro);
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.carrusel-flecha:hover {
+    background: var(--dorado);
+    color: var(--azul);
+}
+
+.carrusel-puntos {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 22px;
+}
+
+.carrusel-punto {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .35);
+    cursor: pointer;
+}
+
+.carrusel-punto.activo {
+    width: 25px;
+    border-radius: 10px;
+    background: var(--dorado-claro);
+}
+
+@media (max-width: 700px) {
+    .familia-tarjetas {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .familia-tarjeta {
+        padding: 26px 18px;
+    }
+
+    .carrusel {
+        gap: 6px;
+    }
+
+    .carrusel-flecha {
+        flex-basis: 32px;
+        width: 32px;
+        height: 32px;
+        font-size: 24px;
+    }
+
+    .carrusel-slide {
+        height: 360px;
+    }
+
+    .nombres-padres {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 400px) {
+    .carrusel-slide {
+        height: 290px;
+    }
+}
+
+
