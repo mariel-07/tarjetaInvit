@@ -1,1386 +1,682 @@
-/* =====================================================
-   VARIABLES
-===================================================== */
+/* =========================================================
+   INVITACIÓN MIS XV AÑOS · ALIZ
+   Tema: Azul Marino Real & Dorado Elegante (Formal)
+   ========================================================= */
 
+/* =========================================================
+   1. VARIABLES Y SISTEMA DE DISEÑO
+   ========================================================= */
 :root {
+    /* Paleta Azul Marino */
+    --azul-noche: #020713;
+    --azul-profundo: #040e24;
+    --azul-marino: #071638;
+    --azul-real: #0c2356;
+    --azul-medio: #143373;
+    --azul-brillo: rgba(20, 51, 115, 0.45);
 
-    --azul: #06152d;
-    --azul-2: #081d3d;
-    --azul-3: #0c2850;
+    /* Paleta Oro de Lujo */
+    --dorado-puro: #d4af37;
+    --dorado-claro: #f7e4a8;
+    --dorado-champagne: #faedd0;
+    --dorado-oscuro: #9f7b24;
+    --dorado-gradiente: linear-gradient(135deg, #faedd0 0%, #d4af37 50%, #9f7b24 100%);
+    --dorado-texto: linear-gradient(135deg, #ffffff 0%, #f7e4a8 40%, #d4af37 100%);
 
-    --dorado: #d4af5a;
-    --dorado-claro: #f0d88a;
-    --dorado-oscuro: #9b7630;
+    /* Bordes y Sombras */
+    --borde-dorado: rgba(212, 175, 55, 0.35);
+    --borde-dorado-brillante: rgba(247, 228, 168, 0.7);
+    --sombra-dorada: 0 0 25px rgba(212, 175, 55, 0.22);
+    --sombra-tarjeta: 0 15px 35px rgba(0, 0, 0, 0.45);
 
-    --blanco: #ffffff;
-    --crema: #f8f3e8;
+    /* Textos */
+    --texto-blanco: #ffffff;
+    --texto-crema: #f7f3e8;
+    --texto-suave: #c0d1ec;
+    --texto-dorado: #f5de99;
 
+    /* Fondos de Paneles */
+    --panel-azul: rgba(4, 15, 38, 0.82);
+    --panel-azul-hover: rgba(7, 24, 61, 0.94);
+    --panel-blur: blur(14px);
+
+    /* Tipografías */
+    --fuente-display: "Cinzel", "Cormorant Garamond", serif;
+    --fuente-titulo: "Cormorant Garamond", Georgia, serif;
+    --fuente-cursiva: "Great Vibes", cursive;
+    --fuente-texto: "Montserrat", -apple-system, sans-serif;
 }
 
-
-/* =====================================================
-   RESET
-===================================================== */
-
-* {
-
+/* =========================================================
+   2. RESET Y BASES GLOBALES
+   ========================================================= */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
-
     box-sizing: border-box;
-
 }
-
 
 html {
-
     scroll-behavior: smooth;
-
+    background-color: var(--azul-noche);
+    color: var(--texto-crema);
 }
-
 
 body {
-
-    background: var(--azul);
-
-    color: var(--crema);
-
-    font-family:
-        "Montserrat",
-        sans-serif;
-
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    background: radial-gradient(
+        ellipse at top center,
+        #0a1d47 0%,
+        #040e24 45%,
+        #020713 100%
+    );
+    background-attachment: fixed;
+    color: var(--texto-crema);
+    font-family: var(--fuente-texto);
+    font-size: 15px;
+    line-height: 1.7;
     overflow-x: hidden;
-
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-
-/* =====================================================
-   ENTRADA
-===================================================== */
-
-.entrada {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            #102c55 0%,
-            #06152d 45%,
-            #020b18 100%
-        );
-
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
-
-    overflow: hidden;
-
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
-
-.entrada.salida {
-
-    opacity: 0;
-
-    visibility: hidden;
-
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+    font-family: inherit;
 }
 
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--dorado-claro);
+    outline-offset: 4px;
+}
 
-/* =====================================================
-   ESTRELLAS
-===================================================== */
+::selection {
+    background: var(--dorado-puro);
+    color: var(--azul-noche);
+}
 
-.estrellas,
-.estrellas::before,
-.estrellas::after {
-
+/* =========================================================
+   3. ESTRELLAS Y AMBIENTE CÓSMICO
+   ========================================================= */
+.estrellas {
     position: absolute;
-
     inset: 0;
-
-    content: "";
-
     pointer-events: none;
-
+    z-index: 1;
+    overflow: hidden;
+    opacity: 0.55;
     background-image:
-
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.8) 1px,
-            transparent 1px
-        );
-
-    background-size:
-        90px 90px;
-
-    animation:
-        estrellas 8s linear infinite;
-
+        radial-gradient(1px 1px at 25px 35px, rgba(255, 255, 255, 0.9), transparent),
+        radial-gradient(1.5px 1.5px at 85px 125px, rgba(247, 228, 168, 0.9), transparent),
+        radial-gradient(1px 1px at 165px 75px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(2px 2px at 220px 240px, rgba(212, 175, 55, 0.8), transparent),
+        radial-gradient(1px 1px at 320px 160px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1.5px 1.5px at 450px 310px, rgba(247, 228, 168, 0.85), transparent);
+    background-size: 500px 500px;
+    animation: moverEstrellas 60s linear infinite;
 }
-
-
-.estrellas::before {
-
-    background-size:
-        130px 130px;
-
-    opacity: .4;
-
-    animation-duration: 12s;
-
-}
-
 
 .estrellas::after {
-
-    background-size:
-        180px 180px;
-
-    opacity: .25;
-
-    animation-duration: 18s;
-
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(1px 1px at 45px 95px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(1.5px 1.5px at 145px 210px, rgba(247, 228, 168, 0.9), transparent),
+        radial-gradient(2px 2px at 380px 80px, rgba(212, 175, 55, 0.75), transparent);
+    background-size: 400px 400px;
+    animation: moverEstrellas 40s linear infinite reverse;
+    opacity: 0.6;
 }
 
-
-@keyframes estrellas {
-
+@keyframes moverEstrellas {
     from {
         transform: translateY(0);
     }
-
     to {
-        transform: translateY(-90px);
+        transform: translateY(-500px);
     }
-
 }
 
+/* =========================================================
+   4. PANTALLA DE ENTRADA (SOBRE FORMAL)
+   ========================================================= */
+.entrada {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 30px 20px;
+    overflow: hidden;
+    text-align: center;
+    background: radial-gradient(
+        ellipse at center,
+        #0b2356 0%,
+        #051333 45%,
+        #020713 100%
+    );
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-/* =====================================================
-   CONTENIDO ENTRADA
-===================================================== */
+.entrada.salida {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
 
 .entrada-contenido {
-
     position: relative;
-
-    z-index: 2;
-
-    animation:
-        aparecer 1.5s ease;
-
+    z-index: 5;
+    width: 100%;
+    max-width: 580px;
+    padding: 40px 25px;
+    border: 1px solid var(--borde-dorado);
+    border-radius: 20px;
+    background: rgba(4, 14, 36, 0.75);
+    backdrop-filter: var(--panel-blur);
+    -webkit-backdrop-filter: var(--panel-blur);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), inset 0 0 35px rgba(212, 175, 55, 0.08);
+    animation: entradaAparecer 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-
-@keyframes aparecer {
-
+@keyframes entradaAparecer {
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(30px);
-
+        transform: translateY(30px) scale(0.97);
     }
-
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
-
+        transform: translateY(0) scale(1);
     }
-
 }
 
-
-.entrada-texto {
-
-    font-size: 11px;
-
-    letter-spacing: 5px;
-
+.entrada-subtitulo {
     color: var(--dorado-claro);
-
-    margin-bottom: 25px;
-
+    font-family: var(--fuente-display);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
     text-transform: uppercase;
-
+    margin-bottom: 20px;
 }
-
-
-/* =====================================================
-   NUMERO 15
-===================================================== */
 
 .numero-15 {
-
     display: flex;
-
+    align-items: center;
     justify-content: center;
-
-    gap: 0;
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        clamp(150px, 30vw, 270px);
-
-    line-height: .65;
-
+    gap: 8px;
+    font-family: var(--fuente-titulo);
+    font-size: clamp(120px, 24vw, 210px);
     font-weight: 300;
-
-    color: transparent;
-
-    -webkit-text-stroke:
-        1px var(--dorado-claro);
-
-    text-shadow:
-
-        0 0 25px
-        rgba(212,175,90,.25);
-
+    line-height: 0.85;
+    background: var(--dorado-gradiente);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.3));
+    user-select: none;
 }
-
-
-.numero-15 span {
-
-    display: block;
-
-}
-
 
 .mis-xv {
-
-    margin-top: 45px;
-
+    margin-top: 18px;
+    color: var(--dorado-champagne);
+    font-family: var(--fuente-display);
+    font-size: clamp(13px, 2vw, 16px);
+    font-weight: 600;
     letter-spacing: 9px;
-
-    font-size: 14px;
-
-    color: var(--dorado-claro);
-
+    text-transform: uppercase;
 }
-
 
 .linea-dorada {
-
-    width: 100px;
-
+    width: 110px;
     height: 1px;
-
-    background:
-        linear-gradient(
-            to right,
-            transparent,
-            var(--dorado),
-            transparent
-        );
-
-    margin: 20px auto;
-
+    margin: 22px auto;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--dorado-claro),
+        transparent
+    );
 }
-
 
 .nombre-entrada {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 42px;
-
+    font-family: var(--fuente-titulo);
+    font-size: clamp(38px, 8vw, 56px);
     font-weight: 400;
-
-    letter-spacing: 5px;
-
+    letter-spacing: 6px;
+    background: var(--dorado-texto);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    margin-bottom: 12px;
 }
 
-
-/* =====================================================
-   BOTÓN ABRIR
-===================================================== */
+.entrada-frase {
+    color: var(--texto-suave);
+    font-family: var(--fuente-titulo);
+    font-size: clamp(16px, 3vw, 20px);
+    font-style: italic;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
 
 .btn-abrir {
-
-    margin-top: 50px;
-
-    padding: 16px 35px;
-
-    border:
-
-        1px solid
-        rgba(212,175,90,.7);
-
-    background:
-
-        rgba(255,255,255,.04);
-
-    color: var(--crema);
-
-    font-family:
-        "Montserrat",
-        sans-serif;
-
-    letter-spacing: 3px;
-
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 36px;
+    border: 1px solid var(--dorado-puro);
+    border-radius: 40px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(12, 35, 86, 0.45) 100%);
+    color: var(--dorado-champagne);
+    font-family: var(--fuente-display);
     font-size: 11px;
-
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
     cursor: pointer;
-
-    transition: .4s;
-
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.btn-abrir .sobre-icono {
+    font-size: 16px;
+    color: var(--dorado-claro);
+    transition: transform 0.3s ease;
+}
 
 .btn-abrir:hover {
-
-    background:
-        var(--dorado);
-
-    color:
-        var(--azul);
-
-    box-shadow:
-        0 0 30px
-        rgba(212,175,90,.3);
-
+    transform: translateY(-3px) scale(1.02);
+    background: var(--dorado-gradiente);
+    color: var(--azul-noche);
+    border-color: var(--dorado-claro);
+    box-shadow: 0 0 35px rgba(212, 175, 55, 0.5);
 }
 
-
-.sobre-icono {
-
-    margin-right: 10px;
-
-    color:
-        var(--dorado-claro);
-
+.btn-abrir:hover .sobre-icono {
+    color: var(--azul-noche);
+    transform: scale(1.15);
 }
 
-
-/* =====================================================
-   INVITACIÓN
-===================================================== */
-
+/* =========================================================
+   5. ESTRUCTURA DE LA INVITACIÓN ACTIVA
+   ========================================================= */
 .invitacion {
-
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
     opacity: 0;
-
     visibility: hidden;
-
-    transition:
-        opacity 1.2s ease;
-
+    transition: opacity 1.2s ease, visibility 1.2s ease;
 }
-
 
 .invitacion.activa {
-
     opacity: 1;
-
     visibility: visible;
-
 }
 
-
-/* =====================================================
-   MÚSICA
-===================================================== */
-
+/* Botón Flotante de Música */
 .btn-musica {
-
     position: fixed;
-
-    right: 20px;
-
-    bottom: 20px;
-
-    z-index: 100;
-
-    width: 48px;
-
-    height: 48px;
-
+    right: 22px;
+    bottom: 22px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1.5px solid var(--dorado-puro);
     border-radius: 50%;
-
-    border:
-        1px solid
-        var(--dorado);
-
-    background:
-        rgba(6,21,45,.85);
-
-    color:
-        var(--dorado-claro);
-
+    background: rgba(4, 14, 36, 0.88);
+    color: var(--dorado-claro);
+    font-size: 20px;
     cursor: pointer;
-
-    backdrop-filter:
-        blur(8px);
-
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.3);
+    transition: transform 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
 }
 
+.btn-musica:hover {
+    transform: scale(1.1);
+    background: var(--azul-real);
+    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+}
 
-/* =====================================================
-   HERO
-===================================================== */
+.btn-musica.reproduciendo .icono-nota {
+    display: inline-block;
+    animation: giroMusica 4s linear infinite;
+}
 
+@keyframes giroMusica {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================================
+   6. SECCIÓN 1: PORTADA PRINCIPAL (HERO)
+   ========================================================= */
 .hero {
-
-    min-height: 100vh;
-
     position: relative;
-
     display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-
-    background:
-
-        linear-gradient(
-            rgba(3,12,27,.45),
-            rgba(3,12,27,.75)
-        ),
-
-        url("../img/portada.jpg");
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-attachment: fixed;
-
-}
-
-
-.hero-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-
-        radial-gradient(
-            circle,
-            transparent 20%,
-            rgba(0,0,0,.45)
-        );
-
-}
-
-
-.hero-contenido {
-
-    position: relative;
-
-    z-index: 2;
-
-    padding: 30px;
-
-}
-
-
-.pequeno {
-
-    font-size: 10px;
-
-    letter-spacing: 6px;
-
-    color:
-        var(--dorado-claro);
-
-}
-
-
-.invitacion-texto {
-
-    margin-top: 20px;
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 22px;
-
-}
-
-
-.numero-hero {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        clamp(150px, 25vw, 280px);
-
-    line-height: .8;
-
-    color: transparent;
-
-    -webkit-text-stroke:
-        1px var(--dorado-claro);
-
-    text-shadow:
-        0 0 35px
-        rgba(212,175,90,.3);
-
-    margin: 25px 0;
-
-}
-
-
-.mis-xv-hero {
-
-    letter-spacing: 10px;
-
-    font-size: 13px;
-
-    color:
-        var(--dorado-claro);
-
-}
-
-
-.hero h1 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        clamp(55px, 9vw, 100px);
-
-    font-weight: 400;
-
-    margin: 15px 0;
-
-}
-
-
-.adorno-dorado {
-
-    color:
-        var(--dorado-claro);
-
-    letter-spacing: 5px;
-
-    margin: 20px 0;
-
-}
-
-
-.fecha-hero {
-
-    letter-spacing: 5px;
-
-    font-size: 11px;
-
-}
-
-
-.scroll-indicator {
-
-    margin-top: 60px;
-
-    font-size: 8px;
-
-    letter-spacing: 4px;
-
-    color:
-        var(--dorado-claro);
-
-}
-
-
-.scroll-indicator span {
-
-    display: block;
-
-    width: 1px;
-
-    height: 45px;
-
-    background:
-        var(--dorado);
-
-    margin:
-        0 auto 12px;
-
-}
-
-
-/* =====================================================
-   SECCIONES
-===================================================== */
-
-.seccion {
-
-    min-height: 75vh;
-
-    padding:
-        100px 25px;
-
-    display: flex;
-
     flex-direction: column;
-
-    justify-content: center;
-
     align-items: center;
-
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 30px 18px 50px;
+    overflow: hidden;
     text-align: center;
+}
 
+.hero-marco {
     position: relative;
-
+    width: 100%;
+    max-width: 480px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.65),
+        0 0 0 1px var(--borde-dorado),
+        0 0 35px rgba(212, 175, 55, 0.15);
+    background: var(--azul-profundo);
 }
 
-
-.seccion:nth-child(even) {
-
-    background:
-        var(--azul-2);
-
+.imagen-portada {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
 }
 
-
-.seccion:nth-child(odd) {
-
-    background:
-        var(--azul);
-
+.hero-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 60px rgba(2, 7, 19, 0.5);
+    background: linear-gradient(
+        180deg,
+        rgba(2, 7, 19, 0.25) 0%,
+        transparent 15%,
+        transparent 80%,
+        rgba(2, 7, 19, 0.6) 100%
+    );
 }
 
+.scroll-indicador {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--dorado-claro);
+    font-family: var(--fuente-display);
+    font-size: 10px;
+    letter-spacing: 3px;
+    opacity: 0.85;
+}
+
+.scroll-indicador span {
+    width: 1px;
+    height: 35px;
+    background: linear-gradient(to bottom, transparent, var(--dorado-claro));
+    animation: pulsoLinea 2s ease-in-out infinite;
+}
+
+.scroll-indicador .flecha-abajo {
+    font-size: 10px;
+    animation: pulsoFlecha 2s ease-in-out infinite;
+}
+
+@keyframes pulsoLinea {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scaleY(0.6);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes pulsoFlecha {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(5px);
+        opacity: 1;
+    }
+}
+
+/* =========================================================
+   7. SECCIONES GENERALES
+   ========================================================= */
+.seccion {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 85px 22px;
+    text-align: center;
+    overflow: hidden;
+}
 
 .titulo-pequeno {
-
-    font-size: 40px;
-
-    letter-spacing: 5px;
-
-    color:
-        var(--dorado-claro);
-
-}
-
-
-
-
-.seccion h2 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        clamp(20px, 8vw, 20px);
-
-    font-weight: 400;
-
-    margin:
-        15px 0 25px;
-
-}
-
-
-.decoracion {
-
-    color:
-        var(--dorado);
-
-    font-size: 20px;
-
-    margin-bottom: 20px;
-
-}
-
-
-.seccion p {
-
-    max-width: 550px;
-
-    line-height: 1.9;
-
-    font-size: 14px;
-
-}
-
-
-/* =====================================================
-   FRASE
-===================================================== */
-
-.frase {
-
-    background:
-
-        linear-gradient(
-            rgba(6,21,45,.93),
-            rgba(6,21,45,.93)
-        ),
-
-        url("../img/fondo.jpg");
-
-    background-size: cover;
-
-}
-
-
-.ornamento {
-
-    font-size: 25px;
-
-    color:
-        var(--dorado);
-
-}
-
-
-.texto-elegante {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        clamp(30px, 5vw, 50px) !important;
-
-    line-height: 1.3 !important;
-
-    margin:
-        30px 0;
-
-}
-
-
-.linea-corta {
-
-    width: 60px;
-
-    height: 1px;
-
-    background:
-        var(--dorado);
-
-    margin-bottom: 30px;
-
-}
-
-
-/* =====================================================
-   CONTADOR
-===================================================== */
-
-.cuenta {
-
-    background:
-        #041127 !important;
-
-}
-
-
-.contador {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    margin-top: 40px;
-
-    gap: 18px;
-
-}
-
-
-.contador-item {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-.contador-item strong {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        clamp(45px, 8vw, 75px);
-
-    font-weight: 300;
-
-    color:
-        var(--dorado-claro);
-
-}
-
-
-.contador-item span {
-
-    font-size: 8px;
-
-    letter-spacing: 3px;
-
-}
-
-
-.separador {
-
-    font-size: 40px;
-
-    color:
-        var(--dorado);
-
-    margin-top: -20px;
-
-}
-
-
-/* =====================================================
-   EVENTO
-===================================================== */
-
-.tarjetas-evento {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 20px;
-
-    width: 100%;
-
-    max-width: 950px;
-
-    margin:
-        30px 0 40px;
-
-}
-
-
-.tarjeta-evento {
-
-    padding:
-        35px 20px;
-
-    border:
-        1px solid
-        rgba(212,175,90,.3);
-
-    background:
-        rgba(255,255,255,.025);
-
-    transition: .4s;
-
-}
-
-
-.tarjeta-evento:hover {
-
-    transform:
-        translateY(-8px);
-
-    border-color:
-        var(--dorado);
-
-}
-
-
-.icono-evento {
-
-    color:
-        var(--dorado);
-
-    font-size: 25px;
-
-    margin-bottom: 20px;
-
-}
-
-
-.tarjeta-evento span {
-
-    display: block;
-
+    color: var(--dorado-claro);
+    font-family: var(--fuente-display);
     font-size: 11px;
-
+    font-weight: 600;
     letter-spacing: 4px;
-
-    color:
-        var(--dorado-claro);
-
-    margin-bottom: 12px;
-
+    text-transform: uppercase;
+    margin-bottom: 16px;
 }
 
-
-.tarjeta-evento strong {
-
-    display: block;
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 28px;
-
-    font-weight: 400;
-
+/* =========================================================
+   8. SECCIÓN 2: PADRES Y HERMANO (PERGAMINO FORMAL)
+   ========================================================= */
+.familia-section {
+    padding: 70px 20px;
 }
 
-
-.tarjeta-evento p {
-
-    font-size: 11px;
-
-    margin-top: 5px;
-
-}
-
-
-.btn-dorado {
-
-    display: inline-block;
-
-    padding:
-        15px 32px;
-
-    border:
-        1px solid
-        var(--dorado);
-
-    color:
-        var(--dorado-claro);
-
-    text-decoration: none;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    transition: .4s;
-
-}
-
-
-.btn-dorado:hover {
-
-    background:
-        var(--dorado);
-
-    color:
-        var(--azul);
-
-}
-
-
-/* =====================================================
-   GALERÍA
-===================================================== */
-
-.galeria-grid {
-
+.familia-tarjeta-marco {
+    position: relative;
+    z-index: 3;
     width: 100%;
+    max-width: 680px;
+    padding: 48px 30px;
+    border: 1px solid var(--borde-dorado);
+    border-radius: 24px;
+    background: linear-gradient(
+        160deg,
+        rgba(7, 22, 54, 0.88) 0%,
+        rgba(4, 14, 36, 0.94) 100%
+    );
+    backdrop-filter: var(--panel-blur);
+    -webkit-backdrop-filter: var(--panel-blur);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.55),
+        inset 0 0 30px rgba(212, 175, 55, 0.06);
+}
 
-    max-width: 900px;
+.adorno-superior {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
 
-    display: grid;
+.adorno-superior span:not(.simbolo) {
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--dorado-claro));
+}
 
-    grid-template-columns:
-        1fr 1fr;
+.adorno-superior span:last-child {
+    transform: rotate(180deg);
+}
 
-    grid-template-rows:
-        300px 300px;
+.adorno-superior .simbolo {
+    color: var(--dorado-claro);
+    font-size: 12px;
+    letter-spacing: 4px;
+}
 
+.intro-emotiva {
+    color: var(--texto-suave);
+    font-family: var(--fuente-titulo);
+    font-size: clamp(17px, 3vw, 22px);
+    font-style: italic;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.bloque-familiar {
+    margin: 18px 0;
+}
+
+.titulo-padres {
+    color: var(--dorado-claro);
+    font-family: var(--fuente-cursiva);
+    font-size: clamp(34px, 5.5vw, 46px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+}
+
+.nombres-padres {
+    color: var(--texto-blanco);
+    font-family: var(--fuente-titulo);
+    font-size: clamp(21px, 3.5vw, 29px);
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    line-height: 1.4;
+}
+
+.simbolo-y {
+    color: var(--dorado-puro);
+    font-family: var(--fuente-cursiva);
+    font-size: 26px;
+    margin: 3px 0;
+}
+
+.separador-dorado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 12px;
-
-    margin-top: 25px;
-
+    margin: 22px auto;
 }
 
-
-.foto {
-
-    overflow: hidden;
-
-}
-
-
-.foto-grande {
-
-    grid-row:
-        span 2;
-
-}
-
-
-.foto img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    transition:
-        transform .7s ease;
-
-}
-
-
-.foto:hover img {
-
-    transform:
-        scale(1.08);
-
-}
-
-
-/* =====================================================
-   DRESS CODE
-===================================================== */
-
-.dress-code {
-
-    background:
-
-        radial-gradient(
-            circle at center,
-            #0b2850,
-            #06152d
-        ) !important;
-
-}
-
-
-.corona {
-
-    font-size: 40px;
-
-    color:
-        var(--dorado);
-
-    margin-bottom: 15px;
-
-}
-
-
-.dress-linea {
-
-    width: 80px;
-
+.separador-dorado span:not(.rombo) {
+    width: 60px;
     height: 1px;
-
-    background:
-        var(--dorado);
-
-    margin: 30px 0;
-
+    background: linear-gradient(to right, transparent, var(--dorado-puro), transparent);
 }
 
-
-.dress-code span {
-
-    font-size: 9px;
-
-    letter-spacing: 4px;
-
-    color:
-        var(--dorado-claro);
-
+.separador-dorado .rombo {
+    color: var(--dorado-puro);
+    font-size: 11px;
 }
 
-
-/* =====================================================
-   CONFIRMACIÓN
-===================================================== */
-
-.confirmacion {
-
-    background:
-        var(--azul-2) !important;
-
+.familia-dedicatoria {
+    color: var(--dorado-champagne);
+    font-family: var(--fuente-titulo);
+    font-size: clamp(15px, 2.5vw, 19px);
+    font-style: italic;
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(212, 175, 55, 0.25);
+    line-height: 1.6;
 }
 
-
-.confirmacion p {
-
-    margin-bottom: 25px;
-
+/* =========================================================
+   9. SECCIÓN 3: CUENTA REGRESIVA Y FECHA
+   ========================================================= */
+.cuenta {
+    padding-top: 60px;
+    padding-bottom: 75px;
 }
 
-
-/* =====================================================
-   CIERRE
-===================================================== */
-
-.cierre {
-
-    min-height: 100vh;
-
-    position: relative;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-
-    background:
-
-        url("../img/fondo.jpg");
-
-    background-size: cover;
-
-    background-position: center;
-
-}
-
-
-.cierre-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        rgba(3,12,27,.72);
-
-}
-
-
-.cierre-contenido {
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.numero-final {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size:
-        200px;
-
-    line-height: .8;
-
-    color: transparent;
-
-    -webkit-text-stroke:
-        1px var(--dorado);
-
-}
-
-
-.cierre h2 {
-
-    font-family:
-        "Cormorant Garamond",
-        serif;
-
-    font-size: 70px;
-
+.frase-emotiva-intro {
+    max-width: 620px;
+    margin: 0 auto 35px;
+    color: var(--dorado-champagne);
+    font-family: var(--fuente-titulo);
+    font-size: clamp(20px, 4vw, 29px);
+    font-style: italic;
     font-weight: 400;
-
+    line-height: 1.5;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-
-@media(max-width: 700px) {
-
-
-    .entrada-texto {
-
-        letter-spacing: 3px;
-
-    }
-
-
-    .nombre-entrada {
-
-        font-size: 34px;
-
-    }
-
-
-    .numero-15 {
-
-        font-size: 170px;
-
-    }
-
-
-    .numero-hero {
-
-        font-size: 180px;
-
-    }
-
-
-    .hero {
-
-        background-attachment:
-            scroll;
-
-    }
-
-
-    .contador {
-
-        gap: 8px;
-
-    }
-
-
-    .contador-item strong {
-
-        font-size: 40px;
-
-    }
-
-
-    .separador {
-
-        font-size: 25px;
-
-    }
-
-
-    .tarjetas-evento {
-
-        grid-template-columns:
-            1fr;
-
-        max-width: 350px;
-
-    }
-
-
-    .galeria-grid {
-
-        grid-template-columns:
-            1fr 1fr;
-
-        grid-template-rows:
-            230px 230px;
-
-    }
-
-
-    .numero-final {
-
-        font-size: 150px;
-
-    }
-
-
-    .cierre h2 {
-
-        font-size: 55px;
-
-    }
-
-}
-
-
-@media(max-width: 400px) {
-
-
-    .contador-item strong {
-
-        font-size: 32px;
-
-    }
-
-
-    .contador-item span {
-
-        font-size: 6px;
-
-    }
-
-
-    .separador {
-
-        font-size: 20px;
-
-    }
-
-
-    .galeria-grid {
-
-        grid-template-rows:
-            190px 190px;
-
-    }
-
-}
-
-
-
-
-/* Fecha */
 .fecha-cosmica {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 7px;
-
-    margin: 0 auto 28px;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto 35px;
 }
 
 .fecha-lateral {
     flex: 1;
-    max-width: 105px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 8px;
+    border-top: 1px solid var(--borde-dorado-brillante);
+    border-bottom: 1px solid var(--borde-dorado-brillante);
+    background: rgba(5, 17, 43, 0.65);
+    backdrop-filter: blur(8px);
+}
 
-    padding: 10px 0;
+.fecha-lateral .sub-label {
+    font-family: var(--fuente-texto);
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--dorado-claro);
+    margin-bottom: 3px;
+}
 
-    border-top: 1px solid rgba(225, 233, 248, 0.75);
-    border-bottom: 1px solid rgba(225, 233, 248, 0.75);
-
-    font-family: "Cormorant Garamond", serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+.fecha-lateral .valor-label {
+    font-family: var(--fuente-display);
+    font-size: clamp(12px, 2.5vw, 15px);
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--texto-blanco);
 }
 
 .fecha-centro {
@@ -1388,292 +684,828 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    width: 105px;
-    min-height: 120px;
-    padding: 10px 5px;
-
-    border: 1px solid rgba(207, 220, 245, 0.65);
-    border-radius: 40px 40px 32px 32px;
-
-    background: rgba(3, 13, 32, 0.3);
-
+    min-width: 115px;
+    padding: 16px 12px;
+    border: 1.5px solid var(--dorado-puro);
+    border-radius: 60px 60px 24px 24px;
+    background: linear-gradient(180deg, rgba(12, 35, 86, 0.9) 0%, rgba(4, 14, 36, 0.95) 100%);
     box-shadow:
-        inset 0 0 18px rgba(170, 196, 240, 0.05),
-        0 0 14px rgba(0, 0, 0, 0.1);
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(212, 175, 55, 0.25);
 }
 
 .fecha-dia {
-    font-family: "Montserrat", sans-serif;
-    font-size: 49px;
-    line-height: 1.05;
+    font-family: var(--fuente-titulo);
+    font-size: clamp(48px, 10vw, 62px);
     font-weight: 400;
+    line-height: 0.95;
+    background: var(--dorado-gradiente);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .fecha-mes {
-    display: none;
+    font-family: var(--fuente-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--texto-blanco);
+    margin-top: 6px;
 }
 
 .fecha-anio {
-    font-size: 15px;
-    margin-top: 8px;
-}
-
-/* =========================================
-   PADRES EN LA PORTADA
-========================================= */
-
-.familia-portada {
-    margin-top: 35px;
-    padding: 20px;
-    position: relative;
-    z-index: 2;
-}
-
-.familia-linea {
-    width: 100px;
-    height: 1px;
-    margin: 12px auto;
-    background: linear-gradient(
-        to right,
-        transparent,
-        var(--dorado),
-        transparent
-    );
-}
-
-.titulo-padres {
+    font-family: var(--fuente-texto);
+    font-size: 12px;
     color: var(--dorado-claro);
-    font-size: 11px;
-    letter-spacing: 4px;
-    margin-bottom: 12px;
-}
-
-.nombres-padres {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 20px;
-    line-height: 1.7;
-    color: var(--crema);
-}
-
-.nombres-padres span {
-    color: var(--dorado-claro);
-    padding: 0 5px;
-}
-
-/* =========================================
-   PADRINOS Y HERMANOS
-========================================= */
-
-.familia {
-    background:
-        radial-gradient(circle at top, #10305a, var(--azul)) !important;
-}
-
-.familia .titulo-pequeno {
-    font-size: 11px;
-}
-
-.familia h2 {
-    font-size: clamp(38px, 7vw, 55px);
-}
-
-.familia-adorno {
-    color: var(--dorado-claro);
-    margin: 0 0 30px;
-}
-
-.familia-tarjetas {
-    width: 100%;
-    max-width: 950px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-}
-
-.familia-tarjeta {
-    padding: 32px 20px;
-    border: 1px solid rgba(212, 175, 90, .4);
-    border-radius: 16px;
-    background: rgba(255, 255, 255, .045);
-    transition: transform .3s ease, background .3s ease;
-}
-
-.familia-tarjeta:hover {
-    transform: translateY(-6px);
-    background: rgba(255, 255, 255, .08);
-}
-
-.familia-etiqueta {
-    color: var(--dorado-claro);
-    font-size: 10px;
     letter-spacing: 2px;
+    margin-top: 2px;
 }
 
-.familia-icono {
-    color: var(--dorado);
-    font-size: 35px;
-    margin: 20px 0;
-}
-
-.familia-tarjeta h3 {
-    font-family: "Cormorant Garamond", serif;
+.cuenta-titulo {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(32px, 5.5vw, 48px);
     font-weight: 400;
-    font-size: 27px;
+    color: var(--texto-blanco);
+    margin-bottom: 25px;
+}
+
+.contador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(8px, 2.5vw, 20px);
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto 30px;
+}
+
+.contador-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 65px;
+    padding: 14px 6px;
+    border: 1px solid var(--borde-dorado);
+    border-radius: 16px;
+    background: rgba(5, 17, 43, 0.75);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.contador-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--dorado-puro);
+}
+
+.contador-item strong {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(36px, 7vw, 56px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--dorado-champagne);
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.contador-item span {
+    margin-top: 6px;
+    font-family: var(--fuente-texto);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--texto-suave);
+}
+
+.separador {
+    font-family: var(--fuente-titulo);
+    font-size: 30px;
+    color: var(--dorado-puro);
+    margin-top: -15px;
+    animation: pulsoSeparador 1.5s ease-in-out infinite;
+}
+
+@keyframes pulsoSeparador {
+    0%, 100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.btn-agendar {
+    margin-top: 10px;
+}
+
+/* =========================================================
+   10. TARJETAS DEL EVENTO (BLOQUES 1 Y 2)
+   ========================================================= */
+.evento {
+    padding-top: 65px;
+    padding-bottom: 75px;
+}
+
+.frase-evento {
+    max-width: 760px;
+    margin: 0 auto 35px;
+    font-family: var(--fuente-titulo);
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--texto-crema);
+}
+
+.tarjetas-evento {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px;
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.tarjetas-evento.tarjetas-tres {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 1000px;
+}
+
+.tarjeta-evento {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 36px 26px;
+    border: 1px solid var(--borde-dorado);
+    border-radius: 20px;
+    background: var(--panel-azul);
+    backdrop-filter: var(--panel-blur);
+    -webkit-backdrop-filter: var(--panel-blur);
+    box-shadow: var(--sombra-tarjeta);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.tarjeta-evento:hover {
+    transform: translateY(-6px);
+    border-color: var(--dorado-puro);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.2);
+    background: var(--panel-azul-hover);
+}
+
+.icono-evento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 74px;
+    height: 74px;
+    margin-bottom: 18px;
+    border: 1.5px solid var(--borde-dorado);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(12, 35, 86, 0.8) 0%, rgba(4, 14, 36, 0.9) 100%);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+    transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.tarjeta-evento:hover .icono-evento {
+    transform: scale(1.08);
+    border-color: var(--dorado-puro);
+}
+
+.icono-evento img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+.icono-svg-dorado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    color: var(--dorado-claro);
+}
+
+.icono-svg-dorado svg {
+    width: 100%;
+    height: 100%;
+}
+
+.tarjeta-categoria {
+    font-family: var(--fuente-display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--dorado-claro);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.tarjeta-nombre {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(24px, 3.5vw, 30px);
+    font-weight: 400;
+    color: var(--texto-blanco);
+    line-height: 1.25;
     margin-bottom: 12px;
 }
 
-.familia-tarjeta p {
-    font-size: 13px;
+.tarjeta-descripcion {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--texto-suave);
+    margin-bottom: 16px;
+    flex-grow: 1;
 }
 
-/* =========================================
-   CARRUSEL DE RECUERDOS
-========================================= */
+.nota-especial {
+    margin-top: 10px;
+    padding: 12px 16px;
+    border: 1px dashed var(--borde-dorado);
+    border-radius: 12px;
+    background: rgba(12, 35, 86, 0.4);
+}
 
+.nota-especial span {
+    display: block;
+    font-family: var(--fuente-display);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--dorado-claro);
+    margin-bottom: 4px;
+}
+
+.nota-especial p {
+    font-size: 12px;
+    color: var(--dorado-champagne);
+    line-height: 1.5;
+}
+
+.tarjeta-horario {
+    font-size: 13.5px;
+    color: var(--texto-blanco);
+    margin-bottom: 18px;
+}
+
+.tarjeta-horario span {
+    color: var(--dorado-claro);
+    font-weight: 500;
+}
+
+.hashtag-box {
+    display: inline-block;
+    padding: 8px 18px;
+    margin-top: 8px;
+    border: 1px solid var(--borde-dorado);
+    border-radius: 30px;
+    background: rgba(12, 35, 86, 0.45);
+    color: var(--dorado-claro);
+    font-family: var(--fuente-display);
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.icono-adorno-sobre {
+    color: var(--dorado-claro);
+    font-size: 16px;
+    letter-spacing: 8px;
+    margin-top: 10px;
+}
+
+/* Botón Dorado Común */
+.btn-dorado {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 13px 26px;
+    border: 1px solid var(--dorado-puro);
+    border-radius: 35px;
+    background: rgba(7, 22, 54, 0.85);
+    color: var(--dorado-champagne);
+    font-family: var(--fuente-display);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-dorado .icono-btn {
+    font-size: 14px;
+}
+
+.btn-dorado:hover {
+    transform: translateY(-3px);
+    background: var(--dorado-gradiente);
+    color: var(--azul-noche);
+    border-color: var(--dorado-claro);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+/* =========================================================
+   11. SECCIÓN 5: MIS RECUERDOS (CARRUSEL)
+   ========================================================= */
 .galeria {
-    overflow: hidden;
-    background: var(--azul) !important;
+    padding-top: 75px;
+    padding-bottom: 85px;
 }
 
-.galeria .titulo-pequeno {
-    font-size: 11px;
+.recuerdos-contenido {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
 }
 
-.galeria h2 {
-    font-size: clamp(38px, 7vw, 55px);
+.recuerdos-titulo {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(44px, 8vw, 68px);
+    font-weight: 400;
+    color: var(--texto-blanco);
+    line-height: 1.15;
+    margin-bottom: 6px;
+}
+
+.recuerdos-titulo span {
+    font-family: var(--fuente-cursiva);
+    font-size: clamp(52px, 9.5vw, 80px);
+    background: var(--dorado-gradiente);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.recuerdos-ornamento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 16px auto 22px;
+}
+
+.recuerdos-ornamento span:not(.ornamento-centro) {
+    width: 70px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--dorado-puro), transparent);
+}
+
+.recuerdos-ornamento .ornamento-centro {
+    color: var(--dorado-claro);
+    font-size: 12px;
+    letter-spacing: 4px;
 }
 
 .galeria-descripcion {
-    margin-bottom: 25px;
+    max-width: 520px;
+    margin: 0 auto 35px;
+    color: var(--dorado-champagne);
+    font-family: var(--fuente-titulo);
+    font-size: clamp(18px, 3.2vw, 23px);
+    font-style: italic;
+    line-height: 1.6;
 }
 
 .carrusel {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 16px;
     width: 100%;
-    max-width: 850px;
-    margin: 15px auto 0;
+    max-width: 620px;
+    margin: 0 auto;
 }
 
 .carrusel-ventana {
     flex: 1;
     min-width: 0;
     overflow: hidden;
-    border: 1px solid rgba(212, 175, 90, .5);
-    border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, .3);
+    border: 1.5px solid var(--borde-dorado-brillante);
+    border-radius: 240px 240px 20px 20px;
+    background: rgba(4, 14, 36, 0.9);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.6),
+        0 0 35px rgba(212, 175, 55, 0.2);
 }
 
 .carrusel-pista {
     display: flex;
-    transition: transform .5s ease-in-out;
+    width: 100%;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
 }
 
 .carrusel-slide {
-    position: relative;
     flex: 0 0 100%;
-    height: 420px;
-    overflow: hidden;
-    background: var(--azul-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 16px 20px;
 }
 
-.carrusel-slide img {
-    display: block;
+.foto-marco {
+    position: relative;
+    width: 100%;
+    height: clamp(320px, 60vw, 440px);
+    overflow: hidden;
+    border: 1px solid var(--borde-dorado);
+    border-radius: 220px 220px 10px 10px;
+    background: var(--azul-profundo);
+}
+
+.foto-marco img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
+    transition: transform 0.7s ease;
+}
+
+.carrusel-slide:hover .foto-marco img {
+    transform: scale(1.04);
 }
 
 .carrusel-slide p {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    max-width: none !important;
-    padding: 25px 12px 18px;
-    color: white;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 25px !important;
-    background: linear-gradient(transparent, rgba(2, 9, 24, .9));
+    margin-top: 18px;
+    color: var(--dorado-claro);
+    font-family: var(--fuente-titulo);
+    font-size: clamp(20px, 3.8vw, 26px);
+    font-style: italic;
+    line-height: 1.35;
 }
 
 .carrusel-flecha {
-    flex: 0 0 42px;
-    width: 42px;
-    height: 42px;
-    border: 1px solid var(--dorado);
+    flex: 0 0 46px;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--borde-dorado);
     border-radius: 50%;
-    background: var(--azul-2);
+    background: rgba(4, 14, 36, 0.85);
     color: var(--dorado-claro);
-    font-size: 30px;
+    font-size: 16px;
     cursor: pointer;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
 }
 
 .carrusel-flecha:hover {
-    background: var(--dorado);
-    color: var(--azul);
+    transform: scale(1.1);
+    background: var(--dorado-gradiente);
+    color: var(--azul-noche);
+    border-color: var(--dorado-claro);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
 }
 
 .carrusel-puntos {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 9px;
-    margin-top: 22px;
+    gap: 10px;
+    margin-top: 25px;
 }
 
 .carrusel-punto {
-    width: 9px;
-    height: 9px;
-    padding: 0;
-    border: none;
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--dorado-puro);
     border-radius: 50%;
-    background: rgba(255, 255, 255, .35);
+    background: transparent;
     cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .carrusel-punto.activo {
-    width: 25px;
-    border-radius: 10px;
-    background: var(--dorado-claro);
+    width: 28px;
+    border-radius: 12px;
+    background: var(--dorado-gradiente);
+    border-color: var(--dorado-claro);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 }
 
-@media (max-width: 700px) {
-    .familia-tarjetas {
+.recuerdos-pie {
+    margin-top: 28px;
+    font-family: var(--fuente-titulo);
+    font-size: clamp(18px, 3.2vw, 24px);
+    font-style: italic;
+    color: var(--texto-suave);
+}
+
+.recuerdos-pie span {
+    color: var(--dorado-claro);
+}
+
+/* =========================================================
+   12. SECCIÓN 8: CONFIRMACIÓN DE ASISTENCIA
+   ========================================================= */
+.confirmacion {
+    padding-top: 65px;
+    padding-bottom: 75px;
+}
+
+.confirmacion-caja {
+    position: relative;
+    width: 100%;
+    max-width: 660px;
+    padding: 48px 30px;
+    border: 1.5px solid var(--borde-dorado);
+    border-radius: 24px;
+    background: linear-gradient(
+        160deg,
+        rgba(7, 23, 56, 0.9) 0%,
+        rgba(4, 14, 36, 0.95) 100%
+    );
+    backdrop-filter: var(--panel-blur);
+    -webkit-backdrop-filter: var(--panel-blur);
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.6),
+        inset 0 0 35px rgba(212, 175, 55, 0.08);
+}
+
+.adorno-corona {
+    font-size: 38px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+}
+
+.confirmacion-titulo {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(34px, 6vw, 50px);
+    font-weight: 400;
+    color: var(--texto-blanco);
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+
+.confirmacion-texto {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(18px, 3.2vw, 23px);
+    font-style: italic;
+    color: var(--dorado-champagne);
+    line-height: 1.6;
+    margin: 15px auto 18px;
+}
+
+.confirmacion-aviso {
+    font-size: 14px;
+    color: var(--texto-suave);
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.confirmacion-aviso strong {
+    color: var(--dorado-claro);
+}
+
+.btn-confirmar {
+    padding: 16px 38px;
+    font-size: 11px;
+}
+
+/* =========================================================
+   13. SECCIÓN 9: CIERRE EMOTIVO
+   ========================================================= */
+.cierre {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 85vh;
+    padding: 90px 24px 70px;
+    overflow: hidden;
+    text-align: center;
+    background: radial-gradient(
+        ellipse at center,
+        #091e4a 0%,
+        #040e24 55%,
+        #020713 100%
+    );
+}
+
+.cierre-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle, transparent 40%, rgba(2, 7, 19, 0.8) 100%);
+}
+
+.cierre-contenido {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.cierre-frase-superior {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(19px, 3.6vw, 27px);
+    font-style: italic;
+    color: var(--dorado-champagne);
+    line-height: 1.55;
+    margin-bottom: 25px;
+}
+
+.numero-final {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(130px, 24vw, 195px);
+    font-weight: 300;
+    line-height: 0.85;
+    background: var(--dorado-gradiente);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.3));
+    user-select: none;
+    margin: 10px 0;
+}
+
+.cierre-nombre {
+    font-family: var(--fuente-cursiva);
+    font-size: clamp(56px, 11vw, 84px);
+    font-weight: 400;
+    color: var(--dorado-claro);
+    line-height: 1.1;
+    text-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    margin-bottom: 12px;
+}
+
+.adorno-dorado {
+    color: var(--dorado-claro);
+    font-size: 11px;
+    letter-spacing: 5px;
+    margin: 20px 0;
+}
+
+.cierre-frase-final {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(17px, 3vw, 22px);
+    font-style: italic;
+    color: var(--texto-blanco);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.cierre-copy {
+    font-family: var(--fuente-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    color: var(--dorado-claro);
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+/* =========================================================
+   14. RESPONSIVE DESIGN (TABLETAS Y CELULARES)
+   ========================================================= */
+@media (max-width: 900px) {
+    .tarjetas-evento.tarjetas-tres {
         grid-template-columns: 1fr;
-        max-width: 400px;
+        max-width: 460px;
+    }
+}
+
+@media (max-width: 768px) {
+    .seccion {
+        padding: 65px 18px;
     }
 
-    .familia-tarjeta {
-        padding: 26px 18px;
+    .tarjetas-evento {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+        gap: 20px;
+    }
+
+    .familia-tarjeta-marco,
+    .confirmacion-caja {
+        padding: 38px 20px;
+        border-radius: 18px;
     }
 
     .carrusel {
-        gap: 6px;
+        gap: 8px;
     }
 
     .carrusel-flecha {
-        flex-basis: 32px;
-        width: 32px;
-        height: 32px;
-        font-size: 24px;
+        flex: 0 0 38px;
+        width: 38px;
+        height: 38px;
+        font-size: 13px;
     }
 
-    .carrusel-slide {
-        height: 360px;
-    }
-
-    .nombres-padres {
-        font-size: 17px;
+    .foto-marco {
+        height: clamp(280px, 68vw, 360px);
     }
 }
 
-@media (max-width: 400px) {
-    .carrusel-slide {
-        height: 290px;
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .entrada-contenido {
+        padding: 32px 18px;
+    }
+
+    .numero-15 {
+        font-size: 130px;
+    }
+
+    .btn-abrir {
+        padding: 14px 28px;
+        font-size: 10px;
+        letter-spacing: 2.5px;
+    }
+
+    .fecha-cosmica {
+        gap: 6px;
+    }
+
+    .fecha-lateral {
+        padding: 10px 4px;
+    }
+
+    .fecha-lateral .valor-label {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .fecha-centro {
+        min-width: 95px;
+        padding: 12px 8px;
+    }
+
+    .fecha-dia {
+        font-size: 42px;
+    }
+
+    .contador {
+        gap: 6px;
+    }
+
+    .contador-item {
+        min-width: 0;
+        padding: 10px 4px;
+    }
+
+    .contador-item strong {
+        font-size: 32px;
+    }
+
+    .contador-item span {
+        font-size: 7.5px;
+        letter-spacing: 1px;
+    }
+
+    .separador {
+        font-size: 20px;
+        margin-top: -10px;
+    }
+
+    .tarjeta-evento {
+        padding: 28px 18px;
+    }
+
+    .btn-dorado {
+        padding: 12px 22px;
+        font-size: 9.5px;
+        letter-spacing: 2px;
+    }
+
+    .btn-musica {
+        width: 44px;
+        height: 44px;
+        right: 16px;
+        bottom: 16px;
+        font-size: 18px;
     }
 }
 
+/* =========================================================
+   15. ACCESIBILIDAD Y REDUCCIÓN DE MOVIMIENTO
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -2,662 +2,652 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Mis XV Años</title>
+    <title>Mis XV Años | Aliz</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
-        rel="stylesheet"
-    >
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="styles.css"
-    >
-
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 
 <body>
 
+    <!-- =========================================
+         PANTALLA DE ENTRADA
+    ========================================== -->
+    <div id="entrada" class="entrada">
 
-    
+        <div class="estrellas" aria-hidden="true"></div>
 
-<!-- =====================================================
-     PANTALLA DE ENTRADA
-===================================================== -->
+        <div class="entrada-contenido">
 
-<div id="entrada" class="entrada">
+            <p class="entrada-subtitulo">✦ Estás cordialmente invitado(a) a ✦</p>
 
-    <!-- Estrellas -->
-    <div class="estrellas"></div>
+            <div class="numero-15" aria-label="15 Años">
+                <span>1</span>
+                <span>5</span>
+            </div>
 
+            <p class="mis-xv">MIS XV AÑOS</p>
 
-    <!-- Contenido -->
-    <div class="entrada-contenido">
+            <div class="linea-dorada" aria-hidden="true"></div>
 
-        <p class="entrada-texto">
-            Una noche especial
-        </p>
+            <h1 class="nombre-entrada">ALIZ</h1>
 
+            <p class="entrada-frase">Una noche mágica e inolvidable nos espera</p>
 
-        <div class="numero-15">
-
-            <span>1</span>
-            <span>5</span>
+            <button type="button" id="abrirInvitacion" class="btn-abrir">
+                <span class="sobre-icono">✉</span>
+                Abrir invitación
+            </button>
 
         </div>
+    </div>
 
 
-        <p class="mis-xv">
-            MIS XV AÑOS
-        </p>
+    <!-- =========================================
+         INVITACIÓN COMPLETA
+    ========================================== -->
+    <div id="invitacion" class="invitacion">
 
+        <!-- Música de Fondo -->
+        <audio id="musica" loop preload="auto">
+            <source
+                src="music/Bruno Mars - Risk It All [Official Music Video] - Bruno Mars.mp3"
+                type="audio/mpeg">
+        </audio>
 
-        <div class="linea-dorada"></div>
-
-
-        <p class="nombre-entrada">
-            ALIZ
-        </p>
-
-
+        <!-- Botón Flotante de Música -->
         <button
-            id="abrirInvitacion"
-            class="btn-abrir"
-        >
-
-            <span class="sobre-icono">
-                ✦
-            </span>
-
-            Abrir invitación
-
+            type="button"
+            id="btnMusica"
+            class="btn-musica"
+            aria-label="Activar o pausar música">
+            <span class="icono-nota">♫</span>
         </button>
 
-    </div>
 
-</div>
+        <!-- =========================================
+             1. PORTADA PRINCIPAL
+        ========================================== -->
+        <section class="hero" id="inicio">
 
+            <div class="estrellas" aria-hidden="true"></div>
 
-
-<!-- =====================================================
-     INVITACIÓN
-===================================================== -->
-
-
-
-<div class="estrellas"></div>
-<div
-    id="invitacion"
-    class="invitacion"
->
-
-
-    <!-- =================================================
-         MÚSICA
-    ================================================== -->
-
-    <audio
-        id="musica"
-        loop
-    >
-
-        <source
-            src="Images/Bruno Mars - Risk It All [Official Music Video] - Bruno Mars.mp3"
-            type="audio/mpeg"
-        >
-
-    </audio>
-
-
-    <button
-        id="btnMusica"
-        class="btn-musica"
-    >
-
-        ♫
-
-    </button>
-
-
-
-    <!-- =================================================
-         HERO
-    ================================================== -->
-
-    <section class="hero">
-         <div class="estrellas"></div>
-
-
-        <div class="hero-overlay"></div>
-
-
-        <div class="hero-contenido">
-
-
-            <p class="pequeno">
-                CON MUCHA ALEGRÍA
-            </p>
-
-
-            <p class="invitacion-texto">
-                quiero compartir contigo
-            </p>
-
-
-            <div class="numero-hero">
-
-                15
-
+            <div class="hero-marco">
+                <img
+                    src="Images/hero.jpg"
+                    alt="Invitación oficial de los XV años de Aliz"
+                    class="imagen-portada">
+                <div class="hero-vignette" aria-hidden="true"></div>
             </div>
 
-
-            <p class="mis-xv-hero">
-                MIS XV AÑOS
-            </p>
-
-
-            <h1>
-                ALIZ
-            </h1>
-
-
-            <div class="adorno-dorado">
-
-                ✦ ───────── ✦
-
+            <div class="scroll-indicador" aria-hidden="true">
+                <span></span>
+                <p>DESLIZA PARA CONTINUAR</p>
+                <div class="flecha-abajo">✦</div>
             </div>
 
+        </section>
 
-            <p class="fecha-hero">
-                20 · NOVIEMBRE · 2026
-            </p>
 
-<div class="scroll-indicator">
-    <p class="titulo-padres">MIS PADRES</p>
+        <!-- =========================================
+             2. MIS PADRES Y HERMANO
+        ========================================== -->
+        <section class="seccion familia-section" id="familia">
 
-    <p class="nombres-padres">
-        Marina Ramos Ramírez  &nbsp;·&nbsp; Ronald Robles Chaupis
-    </p>
-</div>
+            <div class="estrellas" aria-hidden="true"></div>
 
+            <div class="familia-tarjeta-marco">
 
-
-    </section>
-    
-
-
-
-        
-        
-
-
-
-    <!-- =================================================
-         FRASE
-    ================================================== -->
-
-    
-
-
-
-    <!-- =================================================
-         PRESENTACIÓN
-    ================================================== -->
-
-    <section class="seccion presentacion">
-
-
-        <p class="titulo-pequeno">
-            UNA NOCHE PARA RECORDAR
-        </p>
-
-
-        <h2>
-            Mis XV Años
-        </h2>
-
-
-        <div class="decoracion">
-            ✦
-        </div>
-
-
-        <p>
-
-            Quiero que formes parte de este momento
-            tan importante de mi vida.
-
-        </p>
-
-
-    </section>
-
-
-
-    <!-- =================================================
-         CUENTA REGRESIVA
-    ================================================== -->
-
-    <section class="seccion cuenta">
-         <div class="estrellas"></div>
-<!-- Fecha -->
-        <div class="fecha-cosmica">
-
-            <div class="fecha-lateral">
-                <span>SÁBADO</span>
-            </div>
-
-            <div class="fecha-centro">
-                <span class="fecha-dia">14</span>
-                <span class="fecha-mes">NOVIEMBRE</span>
-                <span class="fecha-anio">2026</span>
-            </div>
-
-            <div class="fecha-lateral">
-                <span>NOVIEMBRE</span>
-            </div>
-
-        </div>
-
-        <p class="titulo-pequeno">
-            LA CUENTA REGRESIVA COMIENZA
-        </p>
-
-
-        <h2>
-            Falta muy poco
-        </h2>
-
-
-        <div class="contador">
-
-
-            <div class="contador-item">
-
-                <strong id="dias">
-                    00
-                </strong>
-
-                <span>
-                    DÍAS
-                </span>
-
-            </div>
-
-
-            <div class="separador">
-                :
-            </div>
-
-
-            <div class="contador-item">
-
-                <strong id="horas">
-                    00
-                </strong>
-
-                <span>
-                    HORAS
-                </span>
-
-            </div>
-
-
-            <div class="separador">
-                :
-            </div>
-
-
-            <div class="contador-item">
-
-                <strong id="minutos">
-                    00
-                </strong>
-
-                <span>
-                    MINUTOS
-                </span>
-
-            </div>
-
-
-            <div class="separador">
-                :
-            </div>
-
-
-            <div class="contador-item">
-
-                <strong id="segundos">
-                    00
-                </strong>
-
-                <span>
-                    SEGUNDOS
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- =================================================
-         EVENTO
-    ================================================== -->
-
-    <section class="seccion evento">
-
- <div class="estrellas"></div>
-        <p class="titulo-pequeno">
-            Porque las noches especiales no brillan
-
-solo por sus luces 
-        </p>
-
-
-        <h2>
-           ,sino por las personas que 
-
-las hacen inolvidables
-        </h2>
-
-
-        <div class="tarjetas-evento">
-
-
-            <div class="tarjeta-evento">
-
-                <div class="icono-evento">
-                    ♡
+                <div class="adorno-superior" aria-hidden="true">
+                    <span></span>
+                    <span class="simbolo">✧ ✦ ✧</span>
+                    <span></span>
                 </div>
 
-                <span>
-                    CODIGO DE VESTIMENTA
-                </span>
+                <p class="intro-emotiva">
+                    Con la bendición de Dios y el amor incondicional de:
+                </p>
 
-                <strong>
-                    Elegante
-                </strong>
+                <div class="bloque-familiar">
+                    <h2 class="titulo-padres">Mis Padres</h2>
+                    <p class="nombres-padres">Marina Ramos Ramírez</p>
+                    <p class="simbolo-y">&amp;</p>
+                    <p class="nombres-padres">Ronald Robles Chaupis</p>
+                </div>
 
-                <p>
-                     (El color azul está reservado para la quinceañera)
+                <div class="separador-dorado" aria-hidden="true">
+                    <span></span>
+                    <span class="rombo">✦</span>
+                    <span></span>
+                </div>
+
+                <div class="bloque-familiar">
+                    <h2 class="titulo-padres">Mi Hermano</h2>
+                    <p class="nombres-padres">André Robles Ramos</p>
+                </div>
+
+                <p class="familia-dedicatoria">
+                    “Gracias por ser mi guía, mi refugio y el motivo de mis mayores alegrías.”
                 </p>
 
             </div>
+        </section>
 
- <div class="tarjeta-evento">
 
-                <div class="icono-evento">
-                    ♢
-                </div>
+        <!-- =========================================
+             3. CUENTA REGRESIVA Y FECHA
+        ========================================== -->
+        <section class="seccion cuenta" id="fecha">
 
-                <span>
-                    UBICACIÓN
-                </span>
+            <div class="estrellas" aria-hidden="true"></div>
 
-                <strong>
-                    CELEBRAMOS EVENTOS
-                </strong>
-
-                <p>
-                    Lima, Perú , Puente Piedra
-                </p>
-
-            </div>
-
-
-
-           
-
-
-        </div>
-
-
-        <a
-            href="https://www.google.com/maps/place/CELEBRAMOS+EVENTOS,+Av.+Antigua+Panamericana+Norte+Mz.+B+Lt.07+Urb,+San+Antonio+de+Chaclla+15117/@-11.8853926,-77.074973,17z/data=!4m6!3m5!1s0x9105d1f07050048d:0x15f49466985e1d7a!8m2!3d-11.8853926!4d-77.074973!16s%2Fg%2F11q3bdhcjv?hl=es&g_ep=Eg1tbF8yMDI2MTAwNl8wIOC7DCoASAJQAg%3D%3D"
-            target="_blank"
-            class="btn-dorado"
-        >
-
-            VER UBICACIÓN
-
-        </a>
-
-
-    </section>
-<!-- =================================================
-         MIS PADRINOS
-    ================================================== -->
-
-
-    <!-- =====================================================
-     CARRUSEL DE RECUERDOS
-===================================================== -->
-
-<section class="seccion galeria" id="recuerdos">
-     <div class="estrellas"></div>
-
-    <p class="titulo-pequeno">MIS MOMENTOS</p>
-
-    <h2>Recuerdos</h2>
-
-    <p class="galeria-descripcion">
-        Momentos especiales que guardaré siempre en mi corazón.
-    </p>
-
-    <div class="carrusel">
-
-        <button
-            type="button"
-            class="carrusel-flecha"
-            id="fotoAnterior"
-            aria-label="Fotografía anterior"
-        >‹</button>
-
-        <div class="carrusel-ventana">
-
-            <div class="carrusel-pista" id="slider">
-
-                <div class="carrusel-slide">
-                    <img src="Images/foto1.jpeg" alt="Mi recuerdo número uno">
-                    <p>Un momento especial</p>
-                </div>
-
-                <div class="carrusel-slide">
-                    <img src="Images/foto2.jpeg" alt="Mi recuerdo número dos">
-                    <p>Sonrisas inolvidables</p>
-                </div>
-
-                <div class="carrusel-slide">
-                    <img src="img/recuerdo3.jpg" alt="Mi recuerdo número tres">
-                    <p>Momentos para recordar</p>
-                </div>
-
-                <div class="carrusel-slide">
-                    <img src="img/recuerdo4.jpg" alt="Mi recuerdo número cuatro">
-                    <p>Con mucho cariño</p>
-                </div>
-
-                <div class="carrusel-slide">
-                    <img src="img/recuerdo5.jpg" alt="Mi recuerdo número cinco">
-                    <p>Mis XV años</p>
-                </div>
-
-            </div>
-
-        </div>
-
-        <button
-            type="button"
-            class="carrusel-flecha"
-            id="fotoSiguiente"
-            aria-label="Fotografía siguiente"
-        >›</button>
-
-    </div>
-
-    <div
-        class="carrusel-puntos"
-        id="dot-indicators"
-        aria-label="Seleccionar fotografía"
-    ></div>
-
-</section>
-
-
-    <!-- =================================================
-         DRESS CODE
-    ================================================== -->
-
-    <section class="seccion dress-code">
-
- <div class="estrellas"></div>
-        <div class="corona">
-            ✦
-        </div>
-
-
-        <p class="titulo-pequeno">
-            DRESS CODE
-        </p>
-
-
-        <h2>
-            Elegancia
-        </h2>
-
-
-        <p>
-            Ven preparado para disfrutar
-            de una noche inolvidable.
-        </p>
-
-
-        <div class="dress-linea"></div>
-
-
-        <span>
-            FORMAL · ELEGANTE
-        </span>
-
-
-    </section>
-
-
-
-    <!-- =================================================
-         CONFIRMACIÓN
-    ================================================== -->
-
-    <section class="seccion confirmacion">
-
-
-        <p class="titulo-pequeno">
-            TU PRESENCIA ES MI MEJOR REGALO
-        </p>
-
-
-        <h2>
-            ¿Nos acompañas?
-        </h2>
-
-
-        <p>
-
-            Confirma tu asistencia
-            para compartir juntos
-            esta noche tan especial.
-
-        </p>
-
-
-        <a
-            href="https://wa.me/51999999999?text=Hola%20Maricielo%2C%20confirmo%20mi%20asistencia%20a%20tus%20XV%20a%C3%B1os."
-            target="_blank"
-            class="btn-dorado"
-        >
-
-            CONFIRMAR ASISTENCIA
-
-        </a>
-
-
-    </section>
-
-
-
-    <!-- =================================================
-         CIERRE
-    ================================================== -->
-
-    <section class="cierre">
-
-
-        <div class="cierre-overlay"></div>
-
-
-        <div class="cierre-contenido">
-
-
-            <p>
-                Gracias por ser parte
+            <p class="frase-emotiva-intro">
+                “Hay noches que se recuerdan para siempre...<br>
+                y esta no sería la misma sin ti.”
             </p>
 
+            <div class="fecha-cosmica">
 
-            <div class="numero-final">
-                15
+                <div class="fecha-lateral">
+                    <span class="sub-label">DÍA</span>
+                    <span class="valor-label">SÁBADO</span>
+                </div>
+
+                <div class="fecha-centro">
+                    <span class="fecha-dia">14</span>
+                    <span class="fecha-mes">NOVIEMBRE</span>
+                    <span class="fecha-anio">2026</span>
+                </div>
+
+                <div class="fecha-lateral">
+                    <span class="sub-label">HORA</span>
+                    <span class="valor-label">8:00 P.M.</span>
+                </div>
+
             </div>
 
+            <p class="titulo-pequeno">
+                ✦ QUE EMPIECE LA CUENTA REGRESIVA ✦
+            </p>
 
-            <h2>
-                Maricielo
+            <h2 class="cuenta-titulo">Falta muy poco</h2>
+
+            <div class="contador" role="timer" aria-live="polite">
+
+                <div class="contador-item">
+                    <strong id="dias">00</strong>
+                    <span>DÍAS</span>
+                </div>
+
+                <div class="separador">:</div>
+
+                <div class="contador-item">
+                    <strong id="horas">00</strong>
+                    <span>HORAS</span>
+                </div>
+
+                <div class="separador">:</div>
+
+                <div class="contador-item">
+                    <strong id="minutos">00</strong>
+                    <span>MINUTOS</span>
+                </div>
+
+                <div class="separador">:</div>
+
+                <div class="contador-item">
+                    <strong id="segundos">00</strong>
+                    <span>SEGUNDOS</span>
+                </div>
+
+            </div>
+
+            <a
+                href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+A%C3%B1os+%7C+Aliz&dates=20261115T010000Z/20261115T090000Z&details=Celebraci%C3%B3n+de+los+XV+A%C3%B1os+de+Aliz.+%C2%A1Te+esperamos+para+compartir+una+noche+inolvidable!&location=CELEBRAMOS+EVENTOS,+Av.+Antigua+Panamericana+Norte+Mz.+B+Lt.07,+Puente+Piedra,+Lima"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-dorado btn-agendar">
+                <span class="icono-btn">📅</span> AGENDAR EL EVENTO
+            </a>
+
+        </section>
+
+
+        <!-- =========================================
+             4. INFORMACIÓN DEL EVENTO (PARTE 1)
+        ========================================== -->
+        <section class="seccion evento" id="evento">
+
+            <div class="estrellas" aria-hidden="true"></div>
+
+            <p class="titulo-pequeno">
+                ✦ DETALLES DE LA CELEBRACIÓN ✦
+            </p>
+
+            <h2 class="frase-evento">
+                “Porque las noches especiales no brillan solo por sus luces,<br>
+                sino por las personas que las hacen inolvidables.”
             </h2>
 
+            <div class="tarjetas-evento">
 
-            <div class="adorno-dorado">
-                ✦ ───── ✦
+                <!-- Código de vestimenta -->
+                <div class="tarjeta-evento">
+
+                    <div class="icono-evento">
+                        <img
+                            src="Images/icom.avif"
+                            alt="Código de vestimenta">
+                    </div>
+
+                    <span class="tarjeta-categoria">CÓDIGO DE VESTIMENTA</span>
+
+                    <strong class="tarjeta-nombre">Formal Elegante</strong>
+
+                    <p class="tarjeta-descripcion">
+                        Ven con tu mejor atuendo de fiesta para brillar en esta noche especial.
+                    </p>
+
+                    <div class="nota-especial">
+                        <span>✦ NOTA IMPORTANTE ✦</span>
+                        <p>El color azul marino está reservado exclusivamente para la quinceañera.</p>
+                    </div>
+
+                </div>
+
+                <!-- Ubicación y Recepción -->
+                <div class="tarjeta-evento">
+
+                    <div class="icono-evento">
+                        <div class="icono-svg-dorado" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <span class="tarjeta-categoria">RECEPCIÓN SOCIAL</span>
+
+                    <strong class="tarjeta-nombre">CELEBRAMOS EVENTOS</strong>
+
+                    <p class="tarjeta-descripcion">
+                        Av. Antigua Panamericana Norte Mz. B Lt. 07 Urb. San Antonio de Chaclla, Puente Piedra — Lima, Perú
+                    </p>
+
+                    <p class="tarjeta-horario">
+                        <span>Inicio de Recepción:</span> 8:00 P.M.
+                    </p>
+
+                    <a
+                        href="https://www.google.com/maps/place/CELEBRAMOS+EVENTOS,+Av.+Antigua+Panamericana+Norte+Mz.+B+Lt.07+Urb,+San+Antonio+de+Chaclla+15117/@-11.8853926,-77.074973,17z/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-dorado">
+                        <span class="icono-btn">📍</span> VER UBICACIÓN
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================================
+             5. SECCIÓN: MIS RECUERDOS (GALERÍA)
+        ========================================== -->
+        <section class="seccion galeria" id="recuerdos">
+
+            <div class="estrellas" aria-hidden="true"></div>
+
+            <div class="recuerdos-contenido">
+
+                <p class="titulo-pequeno">✦ MOMENTOS INOLVIDABLES ✦</p>
+
+                <h2 class="recuerdos-titulo">
+                    Mis <span>Recuerdos</span>
+                </h2>
+
+                <div class="recuerdos-ornamento" aria-hidden="true">
+                    <span></span>
+                    <span class="ornamento-centro">✧ ✦ ✧</span>
+                    <span></span>
+                </div>
+
+                <p class="galeria-descripcion">
+                    “Cada instante guarda una historia, cada sonrisa un recuerdo
+                    y cada recuerdo un pedacito de mi corazón.”
+                </p>
+
+                <div class="carrusel">
+
+                    <button
+                        type="button"
+                        class="carrusel-flecha"
+                        id="fotoAnterior"
+                        aria-label="Fotografía anterior">
+                        &#10094;
+                    </button>
+
+                    <div class="carrusel-ventana">
+
+                        <div class="carrusel-pista" id="slider">
+
+                            <div class="carrusel-slide">
+                                <div class="foto-marco">
+                                    <img
+                                        src="Images/foto1.jpeg"
+                                        alt="Un sueño hecho recuerdo - Aliz"
+                                        loading="lazy">
+                                </div>
+                                <p>“Un sueño hecho recuerdo”</p>
+                            </div>
+
+                            <div class="carrusel-slide">
+                                <div class="foto-marco">
+                                    <img
+                                        src="Images/foto2.jpeg"
+                                        alt="Sonrisas que iluminan mi vida - Aliz"
+                                        loading="lazy">
+                                </div>
+                                <p>“Sonrisas que iluminan mi vida”</p>
+                            </div>
+
+                            <div class="carrusel-slide">
+                                <div class="foto-marco">
+                                    <img
+                                        src="Images/foto3.jpeg"
+                                        alt="Instantes que nunca olvidaré - Aliz"
+                                        loading="lazy">
+                                </div>
+                                <p>“Instantes que nunca olvidaré”</p>
+                            </div>
+
+                            <div class="carrusel-slide">
+                                <div class="foto-marco">
+                                    <img
+                                        src="Images/foto4.jpeg"
+                                        alt="Momentos llenos de amor - Aliz"
+                                        loading="lazy">
+                                </div>
+                                <p>“Momentos llenos de amor”</p>
+                            </div>
+
+                            <div class="carrusel-slide">
+                                <div class="foto-marco">
+                                    <img
+                                        src="Images/foto5.jpeg"
+                                        alt="El comienzo de una nueva historia - Aliz"
+                                        loading="lazy">
+                                </div>
+                                <p>“El comienzo de una nueva historia”</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="carrusel-flecha"
+                        id="fotoSiguiente"
+                        aria-label="Fotografía siguiente">
+                        &#10095;
+                    </button>
+
+                </div>
+
+                <div
+                    class="carrusel-puntos"
+                    id="dot-indicators"
+                    aria-label="Seleccionar fotografía">
+                </div>
+
+                <p class="recuerdos-pie">
+                    Con todo mi cariño, <span>Aliz ♡</span>
+                </p>
+
             </div>
 
+        </section>
 
-            <p>
-                Te espero para celebrar juntos.
+
+        <!-- =========================================
+             6. DETALLES DEL EVENTO (PARTE 2)
+        ========================================== -->
+        <section class="seccion evento evento-detalles" id="detalles">
+
+            <div class="estrellas" aria-hidden="true"></div>
+
+            <p class="titulo-pequeno">
+                ✦ VIVE LA FIESTA CONMIGO ✦
             </p>
 
+            <h2 class="frase-evento">
+                Cada detalle ha sido preparado con mucho cariño
+            </h2>
 
-        </div>
+            <div class="tarjetas-evento tarjetas-tres">
+
+                <!-- 1. Compartir Fotos -->
+                <div class="tarjeta-evento">
+
+                    <div class="icono-evento">
+                        <div class="icono-svg-dorado" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                <circle cx="12" cy="13" r="4"></circle>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <span class="tarjeta-categoria">COMPARTE TUS FOTOS</span>
+
+                    <strong class="tarjeta-nombre">Recuerdos Inolvidables</strong>
+
+                    <p class="tarjeta-descripcion">
+                        Te invito a capturar y compartir los momentos más especiales de la noche a través de tus fotografías.
+                    </p>
+
+                    <div class="hashtag-box">
+                        <span>#MisXVAñosAliz</span>
+                    </div>
+
+                </div>
+
+                <!-- 2. Playlist / Música -->
+                <div class="tarjeta-evento">
+
+                    <div class="icono-evento">
+                        <div class="icono-svg-dorado" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 18V5l12-2v13"></path>
+                                <circle cx="6" cy="18" r="3"></circle>
+                                <circle cx="18" cy="16" r="3"></circle>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <span class="tarjeta-categoria">MÚSICA EN VIVO &amp; FIESTA</span>
+
+                    <strong class="tarjeta-nombre">¡Arma la Pista!</strong>
+
+                    <p class="tarjeta-descripcion">
+                        Tú eliges el ritmo de la fiesta. Cuéntame qué canciones no pueden faltar para bailar toda la noche.
+                    </p>
+
+                    <a
+                        href="https://wa.me/51999999999?text=Hola%20Aliz,%20quiero%20sugerir%20esta%20canci%C3%B3n%20para%20tu%20fiesta%20de%2015%20a%C3%B1os:%20"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-dorado">
+                        <span class="icono-btn">🎵</span> SUGERIR CANCIÓN
+                    </a>
+
+                </div>
+
+                <!-- 3. Sugerencia de Regalo -->
+                <div class="tarjeta-evento">
+
+                    <div class="icono-evento">
+                        <div class="icono-svg-dorado" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 12v10H4V12"></path>
+                                <path d="M2 7h20v5H2z"></path>
+                                <path d="M12 22V7"></path>
+                                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <span class="tarjeta-categoria">SUGERENCIA DE REGALO</span>
+
+                    <strong class="tarjeta-nombre">Lluvia de Sobres</strong>
+
+                    <p class="tarjeta-descripcion">
+                        Tu presencia es mi mejor y más grande regalo. Pero si deseas hacerme un presente, dispondremos de un baúl de lluvia de sobres el día del evento.
+                    </p>
+
+                    <div class="icono-adorno-sobre" aria-hidden="true">
+                        ✉ ✧ ✉
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
-    </section>
+        <!-- =========================================
+             7. MIS PADRINOS
+        ========================================== -->
+        <section class="seccion familia-section" id="padrinos">
+
+            <div class="estrellas" aria-hidden="true"></div>
+
+            <div class="familia-tarjeta-marco">
+
+                <div class="adorno-superior" aria-hidden="true">
+                    <span></span>
+                    <span class="simbolo">✧ ✦ ✧</span>
+                    <span></span>
+                </div>
+
+                <p class="intro-emotiva">
+                    Acompañándome en este hermoso camino con su cariño y bendición:
+                </p>
+
+                <div class="bloque-familiar">
+                    <h2 class="titulo-padres">Mis Padrinos</h2>
+                    <p class="nombres-padres">Camila Ramos Coronado</p>
+                    <p class="simbolo-y">&amp;</p>
+                    <p class="nombres-padres">Leoncio Huerta Alejos</p>
+                </div>
+
+                <p class="familia-dedicatoria">
+                    “Gracias por su apoyo constante y por estar siempre presentes en los momentos más importantes de mi vida.”
+                </p>
+
+            </div>
+
+        </section>
 
 
-</div>
+        <!-- =========================================
+             8. CONFIRMACIÓN DE ASISTENCIA
+        ========================================== -->
+        <section class="seccion confirmacion" id="confirmacion">
+
+            <div class="estrellas" aria-hidden="true"></div>
+
+            <div class="confirmacion-caja">
+
+                <div class="adorno-corona" aria-hidden="true"></div>
+
+                <p class="titulo-pequeno">
+                    ✦ TU PRESENCIA ES MI MEJOR REGALO ✦
+                </p>
+
+                <h2 class="confirmacion-titulo">¿Nos acompañas?</h2>
+
+                <div class="separador-dorado" aria-hidden="true">
+                    <span></span>
+                    <span class="rombo">✧</span>
+                    <span></span>
+                </div>
+
+                <p class="confirmacion-texto">
+                    Para mí y mi familia es muy importante contar con tu presencia para compartir juntos esta noche tan soñada.
+                </p>
+
+                <p class="confirmacion-aviso">
+                    Por favor confirma tu asistencia antes del <strong>10 de Noviembre</strong> para mantenerte en nuestra lista exclusiva de invitados.
+                </p>
+
+                <a
+                    href="https://wa.me/51999999999?text=Hola%20Aliz,%20confirmo%20con%20mucha%20alegr%C3%ADa%20mi%20asistencia%20a%20tus%20XV%20A%C3%B1os%20el%2014%20de%20Noviembre."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-dorado btn-confirmar">
+                    <span class="icono-btn">💬</span> CONFIRMAR ASISTENCIA
+                </a>
+
+            </div>
+
+        </section>
 
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+        <!-- =========================================
+             9. CIERRE
+        ========================================== -->
+        <section class="cierre" id="cierre">
 
-<script src="script.js"></script>
+            <div class="estrellas" aria-hidden="true"></div>
 
+            <div class="cierre-overlay" aria-hidden="true"></div>
+
+            <div class="cierre-contenido">
+
+                <p class="cierre-frase-superior">
+                    “Hay momentos en la vida que son inolvidables,<br>
+                    y compartirlos con las personas que más amamos los hace eternos.”
+                </p>
+
+                <div class="numero-final" aria-label="15 Años">15</div>
+
+                <h2 class="cierre-nombre">Aliz</h2>
+
+                <div class="adorno-dorado" aria-hidden="true">
+                    ✦ ──────── ✧ ──────── ✦
+                </div>
+
+                <p class="cierre-frase-final">
+                    Te espero con los brazos abiertos para celebrar juntos una noche mágica.
+                </p>
+
+                <p class="cierre-copy">
+                    XV AÑOS · 14 DE NOVIEMBRE DE 2026
+                </p>
+
+            </div>
+        </section>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
 
 </body>
-
 </html>
