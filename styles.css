@@ -151,9 +151,9 @@ a:focus-visible {
 }
 
 /* =========================================================
-   4. PANTALLA DE ENTRADA (SOBRE FORMAL)
+   4. PANTALLA DE ENTRADA: SOBRE REAL CON SELLO A L
    ========================================================= */
-.entrada {
+.entrada-sobre {
     position: fixed;
     inset: 0;
     z-index: 99999;
@@ -163,156 +163,214 @@ a:focus-visible {
     width: 100%;
     min-height: 100vh;
     min-height: 100dvh;
-    padding: 30px 20px;
+    background: radial-gradient(ellipse at center, #071a42 0%, #030c22 50%, #01050f 100%);
     overflow: hidden;
-    text-align: center;
-    background: radial-gradient(
-        ellipse at center,
-        #0b2356 0%,
-        #051333 45%,
-        #020713 100%
-    );
-    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.entrada.salida {
+.entrada-sobre.salida {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
 }
 
-.entrada-contenido {
-    position: relative;
-    z-index: 5;
+/* Fondo Estrellado Profundo */
+.estrellas-fondo {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image:
+        radial-gradient(1.5px 1.5px at 40px 60px, #ffffff, transparent),
+        radial-gradient(2px 2px at 120px 180px, #f7e4a8, transparent),
+        radial-gradient(1px 1px at 220px 80px, #ffffff, transparent),
+        radial-gradient(2.5px 2.5px at 300px 320px, #d4af37, transparent),
+        radial-gradient(1px 1px at 180px 240px, #a8c8ff, transparent),
+        radial-gradient(2px 2px at 80px 400px, #ffffff, transparent);
+    background-size: 380px 480px;
+    opacity: 0.8;
+}
+
+/* Solapas Diagonales del Sobre */
+.solapa {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50.8%;
+    z-index: 3;
+    pointer-events: none;
+    transition: transform 1.25s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+.solapa-izq {
+    left: 0;
+    filter: drop-shadow(4px 0 25px rgba(20, 90, 230, 0.45));
+}
+
+.solapa-der {
+    right: 0;
+    filter: drop-shadow(-4px 0 25px rgba(20, 90, 230, 0.45));
+}
+
+.solapa svg {
     width: 100%;
-    max-width: 580px;
-    padding: 40px 25px;
-    border: 1px solid var(--borde-dorado);
-    border-radius: 20px;
-    background: rgba(4, 14, 36, 0.75);
-    backdrop-filter: var(--panel-blur);
-    -webkit-backdrop-filter: var(--panel-blur);
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6), inset 0 0 35px rgba(212, 175, 55, 0.08);
-    animation: entradaAparecer 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    height: 100%;
+    display: block;
 }
 
-@keyframes entradaAparecer {
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.97);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+/* Textos Formales en los Espacios V */
+.texto-v-superior {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    text-align: center;
+    pointer-events: none;
+    width: 90%;
+    max-width: 460px;
+    transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.entrada-subtitulo {
-    color: var(--dorado-claro);
+.texto-v-superior .xv-sub {
     font-family: var(--fuente-display);
-    font-size: 11px;
+    font-size: clamp(11px, 2.5vw, 15px);
+    font-weight: 600;
+    letter-spacing: 7px;
+    color: var(--dorado-claro);
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    margin-bottom: 6px;
+}
+
+.texto-v-superior .xv-nombre {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(28px, 6.5vw, 44px);
+    font-weight: 500;
+    letter-spacing: 5px;
+    color: #ffffff;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.35);
+    line-height: 1.15;
+}
+
+.texto-v-inferior {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    text-align: center;
+    pointer-events: none;
+    width: 90%;
+    max-width: 460px;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.texto-v-inferior .fecha-sub {
+    font-family: var(--fuente-display);
+    font-size: clamp(10px, 2.2vw, 13px);
     font-weight: 500;
     letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-.numero-15 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: var(--fuente-titulo);
-    font-size: clamp(120px, 24vw, 210px);
-    font-weight: 300;
-    line-height: 0.85;
-    background: var(--dorado-gradiente);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.3));
-    user-select: none;
-}
-
-.mis-xv {
-    margin-top: 18px;
-    color: var(--dorado-champagne);
-    font-family: var(--fuente-display);
-    font-size: clamp(13px, 2vw, 16px);
-    font-weight: 600;
-    letter-spacing: 9px;
-    text-transform: uppercase;
-}
-
-.linea-dorada {
-    width: 110px;
-    height: 1px;
-    margin: 22px auto;
-    background: linear-gradient(
-        to right,
-        transparent,
-        var(--dorado-claro),
-        transparent
-    );
-}
-
-.nombre-entrada {
-    font-family: var(--fuente-titulo);
-    font-size: clamp(38px, 8vw, 56px);
-    font-weight: 400;
-    letter-spacing: 6px;
-    background: var(--dorado-texto);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1.1;
-    margin-bottom: 12px;
-}
-
-.entrada-frase {
     color: var(--texto-suave);
-    font-family: var(--fuente-titulo);
-    font-size: clamp(16px, 3vw, 20px);
-    font-style: italic;
-    margin-bottom: 30px;
-    line-height: 1.4;
+    margin-bottom: 8px;
 }
 
-.btn-abrir {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 16px 36px;
-    border: 1px solid var(--dorado-puro);
-    border-radius: 40px;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(12, 35, 86, 0.45) 100%);
-    color: var(--dorado-champagne);
-    font-family: var(--fuente-display);
-    font-size: 11px;
+.texto-v-inferior .indicacion {
+    font-family: var(--fuente-texto);
+    font-size: clamp(9px, 2vw, 11px);
     font-weight: 600;
     letter-spacing: 3px;
-    text-transform: uppercase;
-    cursor: pointer;
-    box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-abrir .sobre-icono {
-    font-size: 16px;
     color: var(--dorado-claro);
-    transition: transform 0.3s ease;
+    text-transform: uppercase;
+    animation: pulsoTexto 2.2s infinite ease-in-out;
 }
 
-.btn-abrir:hover {
-    transform: translateY(-3px) scale(1.02);
-    background: var(--dorado-gradiente);
-    color: var(--azul-noche);
-    border-color: var(--dorado-claro);
-    box-shadow: 0 0 35px rgba(212, 175, 55, 0.5);
+@keyframes pulsoTexto {
+    0%, 100% {
+        opacity: 0.65;
+        transform: scale(0.98);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
 }
 
-.btn-abrir:hover .sobre-icono {
-    color: var(--azul-noche);
-    transform: scale(1.15);
+/* Botón Central: Sello de Cera con Monograma A L */
+.boton-sello-contenedor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-sello {
+    width: clamp(130px, 26vw, 180px);
+    height: clamp(130px, 26vw, 180px);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0;
+    outline: none;
+    position: relative;
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 25px rgba(212, 175, 55, 0.4));
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+    animation: respirarSello 3.2s infinite ease-in-out;
+}
+
+@keyframes respirarSello {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 25px rgba(212, 175, 55, 0.35));
+    }
+    50% {
+        transform: scale(1.04);
+        filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 42px rgba(247, 228, 168, 0.7));
+    }
+}
+
+.btn-sello:hover {
+    transform: scale(1.08);
+    animation: none;
+    filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 45px rgba(247, 228, 168, 0.85));
+}
+
+.btn-sello:active {
+    transform: scale(0.96);
+}
+
+.btn-sello svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Animación de Apertura del Sobre */
+.entrada-sobre.abriendo .solapa-izq {
+    transform: translateX(-110%);
+}
+
+.entrada-sobre.abriendo .solapa-der {
+    transform: translateX(110%);
+}
+
+.entrada-sobre.abriendo .boton-sello-contenedor {
+    transform: translate(-50%, -50%) scale(1.22);
+    opacity: 0;
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.75s ease;
+}
+
+.entrada-sobre.abriendo .texto-v-superior,
+.entrada-sobre.abriendo .texto-v-inferior {
+    opacity: 0;
+    transform: translate(-50%, -25px);
 }
 
 /* =========================================================
