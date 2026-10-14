@@ -16,19 +16,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       2. ABRIR INVITACIÓN CON MÚSICA
+       2. ABRIR INVITACIÓN CON MÚSICA Y APERTURA DE SOBRE
        ===================================================== */
+    let yaAbierto = false;
+
     if (abrirInvitacion && entrada && invitacion) {
         abrirInvitacion.addEventListener("click", function () {
+            if (yaAbierto) return;
+            yaAbierto = true;
 
-            // Ocultar la pantalla de entrada con animación
-            entrada.classList.add("salida");
-            invitacion.classList.add("activa");
+            // 1. Iniciar animación de solapas y sello abriéndose
+            entrada.classList.add("abriendo");
 
-            // Permitir desplazamiento
-            document.body.style.overflow = "auto";
-
-            // Intentar reproducir música automáticamente al interactuar
+            // 2. Iniciar reproducción de música de gala
             if (musica && btnMusica) {
                 musica.play()
                     .then(function () {
@@ -41,7 +41,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
             }
 
-            // Scroll suave hacia el inicio de la invitación
+            // 3. Permitir desplazamiento tras la apertura
+            document.body.style.overflow = "auto";
+
+            // 4. Mostrar la invitación y desvanecer el sobre
+            setTimeout(function () {
+                invitacion.classList.add("activa");
+            }, 450);
+
+            setTimeout(function () {
+                entrada.classList.add("salida");
+            }, 850);
+
+            // Scroll suave hacia la parte superior
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
