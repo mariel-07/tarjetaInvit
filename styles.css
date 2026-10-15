@@ -2954,7 +2954,7 @@ a:focus-visible {
 
     /* IMAGEN DE FONDO */
 
-    background-image: url("Images/imagen4.png");
+    background-image: url("Images/imagen5.png");
 
     background-size: cover;
 
@@ -3013,8 +3013,10 @@ a:focus-visible {
     isolation: isolate;
 
     /* Se conserva tu imagen original */
-    background-image: url("Images/imagen4.png");
-    background-size: cover;
+    background-image: url("Images/imagen5.png");
+    
+    /* CAMBIO AQUÍ: Cambia 'cover' por un porcentaje (ej. 70%) o 'contain' */
+    background-size: 70%; 
     background-position: center;
     background-repeat: no-repeat;
 
