@@ -2954,7 +2954,7 @@ a:focus-visible {
 
     /* IMAGEN DE FONDO */
 
-    background-image: url("Images/imagen2.jpg");
+    background-image: url("Images/imagen4.png");
 
     background-size: cover;
 
@@ -3000,60 +3000,56 @@ a:focus-visible {
 
 
 
-/* =========================================*
+/* =========================================
+   9. CIERRE: ESTRELLAS DETRÁS DE LA IMAGEN
+========================================= */
 
-*&#xA0;  ESTRELLAS*
+/* =========================================
+   ESTRELLAS DETRÁS DE IMAGEN2 - CIERRE
+========================================= */
 
-*========================================= */
+#cierre {
+    position: relative;
+    isolation: isolate;
 
+    /* Se conserva tu imagen original */
+    background-image: url("Images/imagen4.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
+    overflow: hidden;
+}
 
+/* Estrellas al fondo, detrás de la imagen */
 #cierre .estrellas {
-    display: none !important;
-}
-
-
-
-/* =========================================*
-
-*&#xA0;  CONTENEDOR*
-
-*========================================= */
-
-
-
-#cierre .cierre-contenido {
-
+    display: block !important;
     position: absolute;
-
     inset: 0;
+    z-index: -1;
+    pointer-events: none;
 
-    z-index: 3;
-
-
-
-    width: 100%;
-
-    height: 100%;
-
-    max-width: none;
-
-
-
-    margin: 0;
-
-    padding: 0;
-
-
-
-    display: block;
-
-    transform: none;
-
+    opacity: 0.9;
 }
 
+/* Se conserva el contenido y la transparencia de imagen2 */
+#cierre .cierre-contenido {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
 
+/* Se conserva la capa oscura original */
+#cierre .cierre-overlay {
+    z-index: 1;
+}
 
+/* Imagen y letras del cierre por encima de las estrellas */
+#cierre .cierre-contenido {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+}
 /* =========================================*
 
 *&#xA0;  NOMBRE ALIZ: BIEN GRANDE ARRIBA*
